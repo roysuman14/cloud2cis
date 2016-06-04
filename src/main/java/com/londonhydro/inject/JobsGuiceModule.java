@@ -9,10 +9,12 @@ import com.google.inject.Singleton;
 import com.google.inject.name.Names;
 import com.londonhydro.cloud2cis.job.GetMoveInJob;
 import com.londonhydro.cloud2cis.job.GetMoveOutJob;
+import com.londonhydro.cloud2cis.job.GetMoveTransferJob;
 import com.londonhydro.cloud2cis.job.GetServerQueueJob;
 import com.londonhydro.cloud2cis.job.JobExecutor;
 import com.londonhydro.cloud2cis.job.PushMoveInToSAP;
 import com.londonhydro.cloud2cis.job.PushMoveOutToSAP;
+import com.londonhydro.cloud2cis.job.PushMoveTransferToSAP;
 import com.londonhydro.cloud2cis.job.PushServerQueueToSAP;
 import com.londonhydro.utils.Constants;
 import com.londonhydro.utils.QuartzUtils;
@@ -28,7 +30,7 @@ public class JobsGuiceModule extends Cloud2CISPrivateModule {
 	@Override
 	protected void configure() {
 		Properties properties = getProperties();
-		//DJ install(new TheModule(properties));
+		// **** CHECK install(new TheModule(properties));
 		Names.bindProperties(binder(), properties);
 
 		binder().bind(GetServerQueueJob.class);
@@ -40,10 +42,14 @@ public class JobsGuiceModule extends Cloud2CISPrivateModule {
 		binder().bind(GetMoveOutJob.class);
 		binder().bind(PushMoveOutToSAP.class);
 
+		binder().bind(GetMoveTransferJob.class);
+		binder().bind(PushMoveTransferToSAP.class);
+
 		// Expose classes
 		expose(GetServerQueueJob.class);
 		expose(GetMoveInJob.class);
 		expose(GetMoveOutJob.class);
+		expose(GetMoveTransferJob.class);
 
 		System.err.println("JobsGuiceModule::configure" + properties);
 
