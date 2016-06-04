@@ -1,0 +1,106 @@
+<ServiceQueue>
+	<BusinessProcess8 Type="MoveIn" ProcessID="1541179442"
+		DateTime="03-22-2016 09:10:03" SubType="New">
+		<MasterData>
+			<CustomerNumber></CustomerNumber>
+			<BillingAccountNumber></BillingAccountNumber>
+			<ResuseAccountNumber>YES</ResuseAccountNumber>
+			<CustomerData>
+				<BPGeneralData>
+					<CustomerType>2</CustomerType>
+					<PersonalData>
+						<FirstName>fName fName</FirstName>
+						<MiddleName>mName mName</MiddleName>
+						<LastName>lName lName</LastName>
+						<DateOfBirth>1981-08-14</DateOfBirth>
+						<EmployerName>employerName</EmployerName>
+						<EmployerAddress>123, Princess St</EmployerAddress>
+						<School>St Xaviers</School>
+						<ParentName>parent Name</ParentName>
+						<ParentAddress>123, Princess St</ParentAddress>
+						<ParentPhoneNumber>2522328100</ParentPhoneNumber>
+					</PersonalData>
+					<BusinessData>
+						<BusinessType>Incorporated</BusinessType>
+						<CompanyName>cName</CompanyName>
+						<TradingName>cName</TradingName>
+						<Website>www.cName.com</Website>
+						<OwnerInfo>
+							<OwnerName>oName oName</OwnerName>
+							<Position>Accountant</Position>
+							<PhoneNumber>2522328100</PhoneNumber>
+							<EmailAddress>cName@cName.com</EmailAddress>
+							<DriverLicenceNumber>V12345688</DriverLicenceNumber>
+							<DateOfBirth>08-14-1981</DateOfBirth>
+						</OwnerInfo>
+						<ContactInfo>
+							<ContactName>contName contName</ContactName>
+							<PhoneNumber>2522328100</PhoneNumber>
+							<EmailAddress>cName@cName.com</EmailAddress>
+						</ContactInfo>
+					</BusinessData>
+				</BPGeneralData>
+				<PhoneNumbers>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5194746713</PhoneNumber>
+					<Extension>123</Extension>
+					<Remarks>RESIDENTIAL</Remarks>
+				</PhoneNumbers>
+				<PhoneNumbers>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5194746714</PhoneNumber>
+					<Extension>123</Extension>
+					<Remarks>MOBILE</Remarks>
+				</PhoneNumbers>
+				<PhoneNumbers>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5194746715</PhoneNumber>
+					<Extension>123</Extension>
+					<Remarks>NOTIFICATION</Remarks>
+				</PhoneNumbers>
+				<PhoneNumbers>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5194746716</PhoneNumber>
+					<Extension>123</Extension>
+					<Remarks>WORK</Remarks>
+				</PhoneNumbers>
+				<EmailAddresses>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<EmailAddress>cName@cName.com</EmailAddress>
+					<Remarks>PRIMARY EMAIL</Remarks>
+				</EmailAddresses>
+				<Identification>
+					<IDType>DRV_LC</IDType>
+					<IdentificationNumber>V42730150790510</IdentificationNumber>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+				</Identification>
+			</CustomerData>
+		</MasterData>
+		<MoveIn>
+			<MoveInDate>04-01-2016</MoveInDate>
+			<Premise>1483</Premise>
+			<MailingAddressControl>2</MailingAddressControl>
+			<BuyingPremise>Y</BuyingPremise>
+			<LawyerName>AA AA</LawyerName>
+			<LawyerPhoneNumber>5194746712</LawyerPhoneNumber>
+			<OwnerName>NULL</OwnerName>
+			<OwnerPhoneNumber>NULL</OwnerPhoneNumber>
+			<MailingAddress>
+				<HouseNumber1>405</HouseNumber1>
+				<StreetName>Elderberry Ave</StreetName>
+				<Unit>NULL</Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5X0A2</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1>Non-CivicInformation1</Non-CivicInformation1>
+				<Non-CivicInformation2>Non-CivicInformation2</Non-CivicInformation2>
+				<COName>COName</COName>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess8>
+</ServiceQueue>

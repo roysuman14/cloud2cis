@@ -1,0 +1,72 @@
+<ServiceQueue>
+	<BusinessProcess12 Type="FixedMailingAddress"
+		DateTime="04-21-2016 03:27:42">
+		<MasterData>
+			<CustomerNumber>188463</CustomerNumber>
+			<BillingAccountNumber>50000480</BillingAccountNumber>
+			<EffectiveDate>06-05-2009</EffectiveDate>
+			<MailingAddress>
+				<HouseNumber1>744</HouseNumber1>
+				<StreetName>CHEAPSIDE ST</StreetName>
+				<Unit>7</Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5Y 3Y7</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1>P.O. BOX 748</Non-CivicInformation1>
+				<Non-CivicInformation2>PO BOX 937 DMPS</Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MasterData>
+	</BusinessProcess12>
+</ServiceQueue>
+
+============================<!-- 26/04/2016 -->
+
+<ServiceQueue>
+	<BusinessProcess12 Type="ChangeFixedMailingAddress"
+		ProcessID="4" DateTime="04-26-2016 02:41:35">
+		<MasterData>
+			<CustomerNumber>52016</CustomerNumber>
+			<BillingAccountNumber>50000480</BillingAccountNumber>
+			<EffectiveDate>06-05-2009</EffectiveDate>
+			<MailingAddress>
+				<HouseNumber1>754</HouseNumber1>
+				<StreetName>GALLOWAY CRES</StreetName>
+				<Unit></Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N6J 2Y7</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MasterData>
+	</BusinessProcess12>
+</ServiceQueue>
+
+================================<!-- 26/04/2016 -->
+
+<ServiceQueue>
+	<BusinessProcess12 Type="ChangeFixedAddress"
+		ProcessID="5" DateTime="04-26-2016 09:47:36">
+		<MasterData>
+			<CustomerNumber>188463</CustomerNumber>
+			<BillingAccountNumber>50000480</BillingAccountNumber>
+			<EffectiveDate>06-05-2009</EffectiveDate>
+			<MailingAddress>
+				<HouseNumber1>744</HouseNumber1>
+				<StreetName>CHEAPSIDE ST</StreetName>
+				<Unit></Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5Y 3Y7</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MasterData>
+	</BusinessProcess12>
+</ServiceQueue>

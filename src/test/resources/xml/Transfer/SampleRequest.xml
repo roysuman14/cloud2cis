@@ -1,0 +1,132 @@
+<ServiceQueue>
+	<BusinessProcess9 Type="Transfer" ProcessID="300000049"
+		DateTime="05-12-2016 02:03:05">
+		<MasterData>
+			<CustomerNumber>518402</CustomerNumber>
+			<BillingAccountNumber>50109943</BillingAccountNumber>
+		</MasterData>
+		<MoveOut>
+			<MoveOutDate>06-09-2015</MoveOutDate>
+			<Premise>100015</Premise>
+			<MailingAddressControl>12</MailingAddressControl>
+			<NewOwnerName>CONSTANTINE KAPOGIANIS</NewOwnerName>
+			<MailingAddress>
+				<HouseNumber1>290</HouseNumber1>
+				<StreetName>NEVILLE DR</StreetName>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N6G 1C3</PostalCode>
+				<Country>CA</Country>
+			</MailingAddress>
+		</MoveOut>
+		<MoveIn>
+			<MoveInDate>06-09-2015</MoveInDate>
+			<Premise>1482</Premise>
+			<MailingAddressControl>12</MailingAddressControl>
+			<MailingAddress>
+				<HouseNumber1>12</HouseNumber1>
+				<StreetName>KITCHENER AVE</StreetName>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5Z 2B2</PostalCode>
+				<Country>CA</Country>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess9>
+</ServiceQueue>
+
+<!-- ----------------------------------------------- -->
+
+<ServiceQueue>
+	<BusinessProcess9 Type="Transfer" ProcessID="300000050"
+		DateTime="05-12-2016 02:03:04">
+		<MasterData>
+			<CustomerNumber>511458</CustomerNumber>
+			<BillingAccountNumber>7369178</BillingAccountNumber>
+		</MasterData>
+		<MoveOut>
+			<MoveOutDate>06-09-2015</MoveOutDate>
+			<Premise>100039</Premise>
+			<MailingAddressControl>9</MailingAddressControl>
+			<NewOwnerName>JOHN PUCCHIO</NewOwnerName>
+			<MailingAddress>
+				<HouseNumber1>405</HouseNumber1>
+				<StreetName>GRANGEOVER CRT</StreetName>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N6G 4K8</PostalCode>
+				<Country>CA</Country>
+			</MailingAddress>
+		</MoveOut>
+		<MoveIn>
+			<MoveInDate>06-09-2015</MoveInDate>
+			<Premise>1482</Premise>
+			<MailingAddressControl>9</MailingAddressControl>
+			<MailingAddress>
+				<HouseNumber1>9</HouseNumber1>
+				<StreetName>CARROTHERS AVE</StreetName>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N6H 1J4</PostalCode>
+				<Country>CA</Country>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess9>
+</ServiceQueue>
+
+<!-- ------------------------------------------------------ -->
+
+<ServiceQueue>
+	<BusinessProcess9 Type="Transfer" ProcessID="300000046"
+		DateTime="05-12-2016 04:41:47">
+		<MasterData>
+			<CustomerNumber>1000027292</CustomerNumber>
+			<BillingAccountNumber>50241266</BillingAccountNumber>
+		</MasterData>
+		<MoveOut>
+			<MoveOutDate>06-09-2015</MoveOutDate>
+			<Premise>100009</Premise>
+			<MailingAddressControl>3</MailingAddressControl>
+			<PhoneNumber></PhoneNumber>
+			<SellingPremise>0</SellingPremise>
+			<LawyerName></LawyerName>
+			<LawyerPhoneNumber></LawyerPhoneNumber>
+			<NewOwnerName>ALEXANDER HRISTOV</NewOwnerName>
+			<NewOwnerPhoneNumber></NewOwnerPhoneNumber>
+			<MailingAddress>
+				<HouseNumber1>8021</HouseNumber1>
+				<StreetName>BITTERSWEET RD</StreetName>
+				<Unit></Unit>
+				<City>SYLVANIA</City>
+				<Province>OH</Province>
+				<PostalCode>43560</PostalCode>
+				<Country>US</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MoveOut>
+		<MoveIn>
+			<MoveInDate>06-09-2015</MoveInDate>
+			<Premise>1482</Premise>
+			<MailingAddressControl></MailingAddressControl>
+			<BuyingPremise>1</BuyingPremise>
+			<LawyerName></LawyerName>
+			<LawyerPhoneNumber></LawyerPhoneNumber>
+			<NewOwnerName></NewOwnerName>
+			<NewOwnerPhoneNumber></NewOwnerPhoneNumber>
+			<MailingAddress>
+				<HouseNumber1>249</HouseNumber1>
+				<StreetName>TWEEDSMUIR AVE</StreetName>
+				<Unit></Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5W 1L4</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess9>
+</ServiceQueue>

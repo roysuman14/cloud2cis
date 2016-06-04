@@ -1,0 +1,28 @@
+<ServiceQueue>
+	<BusinessProcess0 Type="ChangePhoneNumber" ProcessID="3"
+		DateTime="04-19-2016 10:34:02">
+		<MasterData>
+			<CustomerNumber>1000000032</CustomerNumber>
+			<EffectiveDate>04-19-2016</EffectiveDate>
+			<CountryCode>CA</CountryCode>
+			<PhoneNumber>5196709955</PhoneNumber>
+			<Extension>1234</Extension>
+		</MasterData>
+	</BusinessProcess0>
+</ServiceQueue>
+
+===========================<!-- 26/04/2016 -->
+
+<ServiceQueue>
+	<BusinessProcess0 Type="ChangePhoneNumber" ProcessID="100012"
+		DateTime="04-26-2016 03:48:33">
+		<MasterData>
+			<CustomerNumber>1000000004</CustomerNumber>
+			<EffectiveDate>04-26-2016</EffectiveDate>
+			<CountryCode>CA</CountryCode>
+			<PhoneNumber>5196970096</PhoneNumber>
+			<Extension></Extension>
+			<Remarks>RESIDENTIAL</Remarks>
+		</MasterData>
+	</BusinessProcess0>
+</ServiceQueue>

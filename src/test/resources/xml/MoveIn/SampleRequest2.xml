@@ -1,0 +1,71 @@
+<ServiceQueue>
+	<BusinessProcess8 Type="MoveIn" ProcessID="60540"
+		DateTime="04-12-2016 07:00:41" SubType="New">
+		<MasterData>
+			<CustomerNumber></CustomerNumber>
+			<BillingAccountNumber></BillingAccountNumber>
+			<ResuseAccountNumber>YES</ResuseAccountNumber>
+			<CustomerData>
+				<BPGeneralData>
+					<CustomerType>2</CustomerType>
+					<PersonalData>
+						<FirstName>fName fName</FirstName>
+						<MiddleName>mName mName</MiddleName>
+						<LastName>lName lName</LastName>
+						<DateOfBirth>1981-08-14</DateOfBirth>
+						<EmployerName>employerName</EmployerName>
+						<EmployerAddress>123, Princess St</EmployerAddress>
+						<School>St Xaviers</School>
+						<ParentName>parent Name</ParentName>
+						<ParentAddress>123, Princess St</ParentAddress>
+						<ParentPhoneNumber>2522328100</ParentPhoneNumber>
+					</PersonalData>
+					<BusinessData>
+						<BusinessType>Incorporated</BusinessType>
+						<CompanyName>cName</CompanyName>
+						<TradingName>cName</TradingName>
+						<Website>www.cName.com</Website>
+						<OwnerInfo>
+							<OwnerName>oName oName</OwnerName>
+							<Position>Accountant</Position>
+							<PhoneNumber>2522328100</PhoneNumber>
+							<EmailAddress>cName@cName.com</EmailAddress>
+							<DriverLicenceNumber>V12345688</DriverLicenceNumber>
+							<DateOfBirth>08-14-1981</DateOfBirth>
+						</OwnerInfo>
+						<ContactInfo>
+							<ContactName>contName contName</ContactName>
+							<PhoneNumber>2522328100</PhoneNumber>
+							<EmailAddress>cName@cName.com</EmailAddress>
+						</ContactInfo>
+					</BusinessData>
+				</BPGeneralData>
+				<EmailAddresses>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+					<EmailAddress>cName@cName.com</EmailAddress>
+					<Remarks>PRIMARY EMAIL</Remarks>
+				</EmailAddresses>
+				<Identification>
+					<IDType>DRV_LC</IDType>
+					<IdentificationNumber>V42730150790510</IdentificationNumber>
+					<EffectiveDate>04-01-2016</EffectiveDate>
+				</Identification>
+			</CustomerData>
+		</MasterData>
+		<MoveIn>
+			<MoveInDate>04-01-2016</MoveInDate>
+			<Premise>1482</Premise>
+			<MailingAddressControl>2</MailingAddressControl>
+			<BuyingPremise>Y</BuyingPremise>
+			<LawyerName>AA AA</LawyerName>
+			<LawyerPhoneNumber>1234556676</LawyerPhoneNumber>
+			<OwnerName>oName oName</OwnerName>
+			<OwnerPhoneNumber>2522328100</OwnerPhoneNumber>
+			<MailingAddress>
+				<Province>ON</Province>
+				<PostalCode>N5X0A2</PostalCode>
+				<Country>CA</Country>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess8>
+</ServiceQueue>

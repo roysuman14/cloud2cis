@@ -1,0 +1,44 @@
+<ServiceQueue>
+	<BusinessProcess3 Type="ChangeMailingAddress"
+		DateTime="04-21-2016 03:37:02">
+		<MasterData>
+			<CustomerNumber>289468</CustomerNumber>
+			<EffectiveDate>06-05-2009</EffectiveDate>
+			<MailingAddress>
+				<HouseNumber1>9</HouseNumber1>
+				<StreetName>CARROTHERS AVE</StreetName>
+				<Unit>7</Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N6H 1J4</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1>P.O. BOX 748</Non-CivicInformation1>
+				<Non-CivicInformation2>PO BOX 937 DMPS</Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MasterData>
+	</BusinessProcess3>
+</ServiceQueue>
+
+==========<!-- 26/04/2016 -->
+<ServiceQueue>
+	<BusinessProcess3 Type="ChangeMailingAddress"
+		ProcessID="1200481" DateTime="04-26-2016 02:05:01">
+		<MasterData>
+			<CustomerNumber>100477</CustomerNumber>
+			<EffectiveDate>06-05-2009</EffectiveDate>
+			<MailingAddress>
+				<HouseNumber1>303</HouseNumber1>
+				<StreetName>CHAMBERS AVE</StreetName>
+				<Unit>7</Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5X 4H3</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MasterData>
+	</BusinessProcess3>
+</ServiceQueue>

@@ -1,0 +1,31 @@
+<ServiceQueue>
+	<BusinessProcess7 Type="MoveOut" ProcessID="300000060"
+		DateTime="05-12-2016 06:45:01">
+		<MasterData>
+			<CustomerNumber>201803</CustomerNumber>
+			<BillingAccountNumber>50289795</BillingAccountNumber>
+		</MasterData>
+		<MoveOut>
+			<MoveOutDate>06-09-2015</MoveOutDate>
+			<Premise>100046</Premise>
+			<MailingAddressControl>3</MailingAddressControl>
+			<PhoneNumber>21026</PhoneNumber>
+			<SellingPremise>0</SellingPremise>
+			<LawyerName></LawyerName>
+			<LawyerPhoneNumber></LawyerPhoneNumber>
+			<NewOwnerName>BRIAN ROWE</NewOwnerName>
+			<MailingAddress>
+				<HouseNumber1>1333</HouseNumber1>
+				<StreetName>HASTINGS DR</StreetName>
+				<Unit></Unit>
+				<City>LONDON</City>
+				<Province>ON</Province>
+				<PostalCode>N5X 2J1</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1></Non-CivicInformation1>
+				<Non-CivicInformation2></Non-CivicInformation2>
+				<COName></COName>
+			</MailingAddress>
+		</MoveOut>
+	</BusinessProcess7>
+</ServiceQueue>

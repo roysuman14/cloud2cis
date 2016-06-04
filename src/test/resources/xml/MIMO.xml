@@ -1,0 +1,114 @@
+<ServiceQueue>
+	<BusinessProcess8 Type="MoveIn" SubType="New" ProcessID="1000179442" DateTime="01-11-2016 12:06:00">
+		<MasterData>
+			<CustomerNumber></CustomerNumber>
+			<BillingAccountNumber></BillingAccountNumber>
+			<ResuseAccountNumber>YES</ResuseAccountNumber>
+			<CustomerData>
+				<BPGeneralData>
+					<CustomerType>2</CustomerType>
+					<PersonalData>
+						<FirstName>birst Name</FirstName>
+						<MiddleName>bIMO Middle</MiddleName>
+						<LastName>bast Name</LastName>
+						<DateOfBirth>1957-08-13</DateOfBirth>
+						<EmployerName>Raytech</EmployerName>
+						<EmployerAddress>1222, Sheppard Ave, Toronto</EmployerAddress>
+						<School>Jack Chambers</School>
+						<ParentName>Nair Parent</ParentName>
+						<ParentAddress>Kaluvathra, Thalavady</ParentAddress>
+						<ParentPhoneNumber>9447411130</ParentPhoneNumber>
+					</PersonalData>
+					<BusinessData>
+						<BusinessType>Incorparated</BusinessType>
+						<CompanyName>SSG</CompanyName>
+						<TradingName>SSG Canada</TradingName>
+						<Website>www.ssg.ca</Website>
+						<OwnerInfo>
+							<OwnerName>Ajay Nair</OwnerName>
+							<Position>CEO</Position>
+							<PhoneNumber>5197015592</PhoneNumber>
+							<EmailAddress>ajay@ssg.ca</EmailAddress>
+							<DriverLicenceNumber>V12345688</DriverLicenceNumber>
+							<DateOfBirth>10-05-1979</DateOfBirth>
+						</OwnerInfo>
+						<OwnerInfo>
+							<OwnerName>Jayesh</OwnerName>
+							<Position>CIO</Position>
+							<PhoneNumber>5197019559</PhoneNumber>
+							<EmailAddress>jayesh@ssg.ca</EmailAddress>
+							<DriverLicenceNumber>N123456987</DriverLicenceNumber>
+							<DateOfBirth>10-11-1978</DateOfBirth>
+						</OwnerInfo>
+						<ContactInfo>
+							<ContactName>Ajay Contact</ContactName>
+							<PhoneNumber>5197015592</PhoneNumber>
+							<EmailAddress>ajay@ssg.ca</EmailAddress>
+						</ContactInfo>
+						<ContactInfo>
+							<ContactName>Manjith Contact</ContactName>
+							<PhoneNumber>9854626369</PhoneNumber>
+							<EmailAddress>Manjith@ssg.ca</EmailAddress>
+						</ContactInfo>
+					</BusinessData>
+				</BPGeneralData>
+				<PhoneNumber>
+					<EffectiveDate>01-22-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5197017012</PhoneNumber>
+					<Extension>4620</Extension>
+					<Remarks>RESIDENTIAL</Remarks>
+				</PhoneNumber>
+				<PhoneNumber>
+					<EffectiveDate>01-25-2016</EffectiveDate>
+					<CountryCode>CA</CountryCode>
+					<PhoneNumber>5197017013</PhoneNumber>
+					<Extension>5620</Extension>
+					<Remarks>NOTIFICATION</Remarks>
+				</PhoneNumber>
+				<EmailAddress>
+					<EffectiveDate>01-22-2016</EffectiveDate>
+					<EmailAddress>a@ssg.ca</EmailAddress>
+					<Remarks>PRIMARY EMAIL</Remarks>
+				</EmailAddress>
+				<EmailAddress>
+					<EffectiveDate>01-25-2016</EffectiveDate>
+					<EmailAddress>b@ssg.ca</EmailAddress>
+					<Remarks>NOTIFICATION EMAIL</Remarks>
+				</EmailAddress>
+				<Identification>
+					<IDType>DRV_LC</IDType>
+					<IdentificationNumber>V42730150790510</IdentificationNumber>
+					<EffectiveDate>01-22-2016</EffectiveDate>
+				</Identification>
+				<Identification>
+					<IDType>VISA</IDType>
+					<IdentificationNumber>458536987522</IdentificationNumber>
+					<EffectiveDate>01-22-2016</EffectiveDate>
+				</Identification>
+			</CustomerData>
+		</MasterData>
+		<MoveIn>
+			<MoveInDate>01-22-2016</MoveInDate>
+			<Premise>187754</Premise>
+			<MailingAddressControl>2</MailingAddressControl>
+			<BuyingPremise>Y</BuyingPremise>
+			<LawyerName>Lawyer Name</LawyerName>
+			<LawyerPhoneNumber>LawyerPhoneNumber</LawyerPhoneNumber>
+			<OwnerName>OwnerName</OwnerName>
+			<OwnerPhoneNumber>OwnerPhoneNumber</OwnerPhoneNumber>
+			<MailingAddress>
+				<HouseNumber1>101</HouseNumber1>
+				<StreetName>Skyharbour</StreetName>
+				<Unit>12</Unit>
+				<City>Brampton</City>
+				<Province>ON</Province>
+				<PostalCode>N5X0B3</PostalCode>
+				<Country>CA</Country>
+				<Non-CivicInformation1>Non-CivicInformation1</Non-CivicInformation1>
+				<Non-CivicInformation2>Non-CivicInformation2</Non-CivicInformation2>
+				<COName>COName</COName>
+			</MailingAddress>
+		</MoveIn>
+	</BusinessProcess8>
+</ServiceQueue>
