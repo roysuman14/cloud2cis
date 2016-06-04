@@ -21,6 +21,7 @@
  */
 package com.londonhydro.model.moveout;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonProperty;
@@ -33,9 +34,13 @@ import com.londonhydro.model.Ideable;
  * @author Love Talwar (ltalwar@affsys.com)
  *
  */
-public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
+public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>, Serializable
 {
-    @JsonProperty("moveOutStateId")
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -3517246970333166717L;
+	@JsonProperty("moveOutStateId")
     private Long moveOutStateId;
     @JsonProperty("moveOutState")
     private String moveOutState;
@@ -49,14 +54,26 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     private String accountId;
     @JsonProperty("loginId")
     private Long loginId;
+    
+    @JsonProperty("selling")
+    private boolean selling;
     @JsonProperty("ownerName")
     private String ownerName;
     @JsonProperty("ownerPhoneNumber")
     private String ownerPhoneNumber;
-    @JsonProperty("dob")
-    private Date dob;
+    @JsonProperty("lawyerName")
+    private String lawyerName;
+    @JsonProperty("lawyerPhone")
+    private String lawyerPhone;
+    
     @JsonProperty("mailingAddress")
     private String mailingAddressControl;
+    @JsonProperty("careOf")
+    private String careOf;    
+    @JsonProperty("nonCivic1")
+    private String nonCivic1;
+    @JsonProperty("nonCivic2")
+    private String nonCivic2;
     @JsonProperty("streetNumber")
     private String streetNumber;
     @JsonProperty("streetName")
@@ -71,20 +88,14 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     private String postalCode;
     @JsonProperty("country")
     private String country;
-    @JsonProperty("phoneNumber")
-    private String phoneNumber;
-    @JsonProperty("mobileNumber")
-    private String mobileNumber;
-    @JsonProperty("emailAddress")
-    private String emailAddress;
-    @JsonProperty("lawyerName")
-    private String lawyerName;
-    @JsonProperty("lawyerPhone")
-    private String lawyerPhone;
+    
     @JsonProperty("createDate")
     private Date createDate;
     @JsonProperty("updateDate")
     private Date updateDate;
+
+    @JsonProperty("emailAddress")
+    private String emailAddress;
     @JsonProperty("electricReading")
     private Double electricReading;
     @JsonProperty("electricReadingDate")
@@ -93,18 +104,10 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     private Double waterReading;
     @JsonProperty("waterReadingDate")
     private Date waterReadingDate;
-    @JsonProperty("selling")
-    private boolean selling;
     @JsonProperty("outofProvince")
     private boolean outofProvince;
     @JsonProperty("username")
     private String username;
-    @JsonProperty("careOf")
-    private String careOf;    
-    @JsonProperty("nonCivic1")
-    private String nonCivic1;
-    @JsonProperty("nonCivic2")
-    private String nonCivic2;
     @JsonProperty("customerId")
     private String customerId;
     @JsonProperty("transactionId")
@@ -112,8 +115,40 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     @JsonProperty("transfer")
     private boolean transfer;
     
+    @JsonProperty("resiPhone")
+    private String resiPhone; 
+    @JsonProperty("bizPhone")
+    private String bizPhone;
+    @JsonProperty("bizPhoneExt")
+    private String bizPhoneExt;
+    @JsonProperty("cellPhoneNumber")
+    private String cellPhoneNumber;
     
-    public Long getMoveOutStateId() { return moveOutStateId; } 
+	public String getResiPhone() {
+		return resiPhone;
+	}
+	public void setResiPhone(String resiPhone) {
+		this.resiPhone = resiPhone;
+	}
+	public String getBizPhone() {
+		return bizPhone;
+	}
+	public void setBizPhone(String bizPhone) {
+		this.bizPhone = bizPhone;
+	}
+	public String getBizPhoneExt() {
+		return bizPhoneExt;
+	}
+	public void setBizPhoneExt(String bizPhoneExt) {
+		this.bizPhoneExt = bizPhoneExt;
+	}
+	public String getCellPhoneNumber() {
+		return cellPhoneNumber;
+	}
+	public void setCellPhoneNumber(String cellPhoneNumber) {
+		this.cellPhoneNumber = cellPhoneNumber;
+	}
+	public Long getMoveOutStateId() { return moveOutStateId; } 
     public void setMoveOutStateId(Long moveOutStateId) { this.moveOutStateId = moveOutStateId; } 
     public String getMoveOutState() { return moveOutState; } 
     public void setMoveOutState(String moveOutState) { this.moveOutState = moveOutState; } 
@@ -127,8 +162,6 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     public void setAccountId(String accountId) { this.accountId = accountId; } 
     public Long getLoginId() { return loginId; }
     public void setLoginId(Long loginId) { this.loginId = loginId; } 
-    public Date getDob() { return dob; } 
-    public void setDob(Date dob) { this.dob = dob; }
     public String getMailingAddressControl() { return mailingAddressControl; }
     public void setMailingAddressControl(String mailingAddressControl) { this.mailingAddressControl = mailingAddressControl; }    
     public String getStreetNumber() { return streetNumber; } 
@@ -145,10 +178,6 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
     public void setPostalCode(String postalCode) { this.postalCode = postalCode; } 
     public String getCountry() { return country; } 
     public void setCountry(String country) { this.country = country; } 
-    public String getPhoneNumber() { return phoneNumber; } 
-    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; } 
-    public String getMobileNumber() { return mobileNumber; } 
-    public void setMobileNumber(String mobileNumber) { this.mobileNumber = mobileNumber; } 
     public String getEmailAddress() { return emailAddress; } 
     public void setEmailAddress(String emailAddress) { this.emailAddress = emailAddress; } 
     public String getLawyerName() { return lawyerName; } 
@@ -257,7 +286,6 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
                 && com.google.common.base.Objects.equal(this.accountId, other.accountId)
                 && com.google.common.base.Objects.equal(this.ownerName, other.ownerName)
                 && com.google.common.base.Objects.equal(this.ownerPhoneNumber, other.ownerPhoneNumber)
-                && com.google.common.base.Objects.equal(this.dob, other.dob)
                 && com.google.common.base.Objects.equal(this.streetNumber, other.streetNumber)
                 && com.google.common.base.Objects.equal(this.streetName, other.streetName)
                 && com.google.common.base.Objects.equal(this.streetUnit, other.streetUnit)
@@ -265,8 +293,6 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
                 && com.google.common.base.Objects.equal(this.province, other.province)
                 && com.google.common.base.Objects.equal(this.postalCode, other.postalCode)
                 && com.google.common.base.Objects.equal(this.country, other.country)
-                && com.google.common.base.Objects.equal(this.phoneNumber, other.phoneNumber)
-                && com.google.common.base.Objects.equal(this.mobileNumber, other.mobileNumber)
                 && com.google.common.base.Objects.equal(this.emailAddress, other.emailAddress)
                 && com.google.common.base.Objects.equal(this.lawyerName, other.lawyerName)
                 && com.google.common.base.Objects.equal(this.lawyerPhone, other.lawyerPhone)
@@ -277,7 +303,12 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
                 && com.google.common.base.Objects.equal(this.waterReadingDate, other.waterReadingDate)
                 && com.google.common.base.Objects.equal(this.selling, other.selling)
                 && com.google.common.base.Objects.equal(this.outofProvince, other.outofProvince)
-                && com.google.common.base.Objects.equal(this.username, other.username);
+                && com.google.common.base.Objects.equal(this.username, other.username)
+                && com.google.common.base.Objects.equal(this.resiPhone, other.resiPhone)
+                && com.google.common.base.Objects.equal(this.bizPhone, other.bizPhone)
+                && com.google.common.base.Objects.equal(this.bizPhoneExt, other.bizPhoneExt)
+                && com.google.common.base.Objects.equal(this.cellPhoneNumber, other.cellPhoneNumber)
+                ;
               
 }
 
@@ -293,14 +324,15 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
 		return com.google.common.base.Objects.hashCode(this.getId(),
 				this.moveOutStateId, this.moveOutState, this.confirmationNumber, this.moveOutDate,
 				this.premiseId, this.accountId, this.loginId, this.ownerName,
-				this.ownerPhoneNumber, this.dob, this.streetNumber, this.streetName,
+				this.ownerPhoneNumber, this.streetNumber, this.streetName,
 				this.streetUnit, this.city, this.province, this.postalCode,
-				this.country, this.phoneNumber, this.mobileNumber,
+				this.country, 
 				this.emailAddress, this.lawyerName,
 				this.lawyerPhone, this.createDate, this.updateDate,
 				this.electricReading, this.electricReadingDate,
 				this.waterReading, this.waterReadingDate, this.selling,
-				this.outofProvince, this.username);
+				this.outofProvince, this.username,this.resiPhone,this.bizPhone,this.bizPhoneExt,
+	            this.cellPhoneNumber);
 
     }
 
@@ -318,17 +350,17 @@ public class MoveOutRequest extends BaseEntity<Long> implements Ideable<Long>
                 .addValue(this.moveOutDate).addValue(this.premiseId)
                 .addValue(this.accountId).addValue(this.loginId)
                 .addValue(this.ownerName).addValue(this.ownerPhoneNumber)
-                .addValue(this.dob).addValue(this.streetNumber)
+                .addValue(this.streetNumber)
                 .addValue(this.streetName).addValue(this.streetUnit)
                 .addValue(this.city).addValue(this.province)
                 .addValue(this.postalCode).addValue(this.country)
-                .addValue(this.phoneNumber).addValue(this.mobileNumber)
                 .addValue(this.emailAddress).addValue(this.lawyerName)
                 .addValue(this.lawyerPhone).addValue(this.createDate)
                 .addValue(this.updateDate).addValue(this.electricReading)
                 .addValue(this.electricReadingDate).addValue(this.waterReading)
                 .addValue(this.waterReadingDate).addValue(this.selling)
-                .addValue(this.outofProvince).addValue(this.username)
+                .addValue(this.outofProvince).addValue(this.username).addValue(this.resiPhone).addValue(this.bizPhone)
+                .addValue(this.bizPhoneExt).addValue(this.cellPhoneNumber)
                 .toString();
     }
     

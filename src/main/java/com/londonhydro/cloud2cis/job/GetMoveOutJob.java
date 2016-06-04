@@ -54,6 +54,8 @@ public class GetMoveOutJob extends AbstractJob {
 				});
 
 				if (moveOutRequestList != null && !moveOutRequestList.isEmpty()) {
+					
+					logger.info("Request recevied form MyAccount. " + moveOutRequestList.size());
 
 					pushMoveOutToSAP.execute(moveOutRequestList);
 
