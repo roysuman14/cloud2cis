@@ -1,7 +1,6 @@
 package com.londonhydro.cloud2cis.bo;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.logging.Log;
@@ -9,6 +8,7 @@ import org.apache.commons.logging.LogFactory;
 import org.codehaus.jackson.map.ObjectMapper;
 
 import com.londonhydro.cloud2cis.model.QueueTypes;
+import com.londonhydro.cloud2cis.util.DataUtil;
 import com.londonhydro.model.movein.BusinessContact;
 import com.londonhydro.model.movein.BusinessIncorporation;
 import com.londonhydro.model.movein.BusinessPrivate;
@@ -64,16 +64,19 @@ public class MoveInProxy {
 
 		ObjectMapper mapper = new ObjectMapper();
 
-		Calendar systemTime = Calendar.getInstance();
-		Date today = new Date();
-		systemTime.setTime(today);
+		// today
+		Calendar today = Calendar.getInstance();
+
 		ServiceQueue sq = new ServiceQueue();
 
 		BusinessProcess8Type moveInInfo = new BusinessProcess8Type();
+
+		// header information
 		moveInInfo.setProcessID(Long.toString((moveInRequestList.get(0)
 				.getTransactionId())));
 		moveInInfo.setType(QueueTypes.MoveIn.toString());
-		moveInInfo.setDateTime(systemTime);
+		moveInInfo.setDateTime(today);
+		// ******* CHECK: new or existing
 		moveInInfo.setSubType("New");
 
 		for (MoveInRequest moveInRequest : moveInRequestList) {
@@ -89,7 +92,8 @@ public class MoveInProxy {
 			premise.setValue(moveInRequest.getPremiseId());
 			moveIn.setPremise(premise);
 
-			moveIn.setMoveInDate(dateToCalendar(moveInRequest.getMoveInDate()));
+			moveIn.setMoveInDate(DataUtil.dateToCalendar(moveInRequest
+					.getMoveInDate()));
 
 			// previous owner/laywer details
 			BuyingPremise buyingPremise = new BuyingPremise();
@@ -97,26 +101,28 @@ public class MoveInProxy {
 			buyingPremise.setValue(moveInRequest.isBuying() ? "Y" : "N");
 
 			OwnerName ownerName = new OwnerName();
-			ownerName.setValue(sanitizeString(moveInRequest.getOwnerName()));
+			ownerName.setValue(DataUtil.sanitizeString(moveInRequest
+					.getOwnerName()));
 			moveIn.setOwnerName(ownerName);
 
 			OwnerPhoneNumber ownerPhoneNumber = new OwnerPhoneNumber();
-			ownerPhoneNumber.setValue(sanitizeString(moveInRequest
+			ownerPhoneNumber.setValue(DataUtil.sanitizeString(moveInRequest
 					.getOwnerPhone()));
 			moveIn.setOwnerPhoneNumber(ownerPhoneNumber);
 
 			LawyerName lawyerName = new LawyerName();
-			lawyerName.setValue(sanitizeString(moveInRequest.getLawyerName()));
+			lawyerName.setValue(DataUtil.sanitizeString(moveInRequest
+					.getLawyerName()));
 			moveIn.setLawyerName(lawyerName);
 
 			LawyerPhoneNumber lawyerPhoneNumber = new LawyerPhoneNumber();
-			lawyerPhoneNumber.setValue(sanitizeString(moveInRequest
+			lawyerPhoneNumber.setValue(DataUtil.sanitizeString(moveInRequest
 					.getLawyerPhone()));
 			moveIn.setLawyerPhoneNumber(lawyerPhoneNumber);
 
 			// mailing address & control flag
 			MailingAddressControl mac = new MailingAddressControl();
-			mac.setValue(sanitizeString(moveInRequest
+			mac.setValue(DataUtil.sanitizeString(moveInRequest
 					.getMailingAddressControl()));
 			moveIn.setMailingAddressControl(mac);
 
@@ -124,59 +130,62 @@ public class MoveInProxy {
 			moveIn.setMailingAddress(mailingAddress);
 
 			CONameType coNameType = new CONameType();
-			coNameType.setValue(sanitizeString(moveInRequest.getCareOf()));
+			coNameType.setValue(DataUtil.sanitizeString(moveInRequest
+					.getCareOf()));
 			mailingAddress.setCOName(coNameType);
 
 			NonCivicInformation1 nonCivicInformation1 = new NonCivicInformation1();
-			nonCivicInformation1.setValue(sanitizeString(moveInRequest
+			nonCivicInformation1.setValue(DataUtil.sanitizeString(moveInRequest
 					.getNonCivic1()));
 			mailingAddress.setNonCivicInformation1(nonCivicInformation1);
 
 			NonCivicInformation2 nonCivicInformation2 = new NonCivicInformation2();
-			nonCivicInformation2.setValue(sanitizeString(moveInRequest
+			nonCivicInformation2.setValue(DataUtil.sanitizeString(moveInRequest
 					.getNonCivic2()));
 			mailingAddress.setNonCivicInformation2(nonCivicInformation2);
 
 			HouseNumber1 houseNumber1 = new HouseNumber1();
-			houseNumber1.setValue(sanitizeString(moveInRequest
+			houseNumber1.setValue(DataUtil.sanitizeString(moveInRequest
 					.getStreetNumber()));
 			mailingAddress.setHouseNumber1(houseNumber1);
 
 			StreetName streetName = new StreetName();
-			streetName.setValue(sanitizeString(moveInRequest.getStreetName()));
+			streetName.setValue(DataUtil.sanitizeString(moveInRequest
+					.getStreetName()));
 			mailingAddress.setStreetName(streetName);
 
 			Unit unit = new Unit();
-			unit.setValue(sanitizeString(moveInRequest.getStreetUnit()));
+			unit.setValue(DataUtil.sanitizeString(moveInRequest.getStreetUnit()));
 			mailingAddress.setUnit(unit);
 
 			City city = new City();
-			city.setValue(sanitizeString(moveInRequest.getCity()));
+			city.setValue(DataUtil.sanitizeString(moveInRequest.getCity()));
 			mailingAddress.setCity(city);
 
 			Province province = new Province();
-			province.setValue(sanitizeString(moveInRequest.getProvince()));
+			province.setValue(DataUtil.sanitizeString(moveInRequest
+					.getProvince()));
 			mailingAddress.setProvince(province);
 
 			PostalCode postalCode = new PostalCode();
-			postalCode.setValue(sanitizeStringRemoveWS(moveInRequest
+			postalCode.setValue(DataUtil.sanitizeStringRemoveWS(moveInRequest
 					.getPostalCode()));
 			mailingAddress.setPostalCode(postalCode);
 
 			Country country = new Country();
-			country.setValue(sanitizeString(moveInRequest.getCountry()));
+			country.setValue(DataUtil.sanitizeString(moveInRequest.getCountry()));
 			mailingAddress.setCountry(country);
 
 			// customer personal/business info
 			MasterData masterData = new MasterData();
 
 			CustomerNumberType customerNumberType = new CustomerNumberType();
-			customerNumberType.setValue(sanitizeString(moveInRequest
+			customerNumberType.setValue(DataUtil.sanitizeString(moveInRequest
 					.getCustomerId()));
 			masterData.setCustomerNumber(customerNumberType);
 
 			BillingAccountNumberType billingAccountNumber = new BillingAccountNumberType();
-			billingAccountNumber.setValue(sanitizeString(moveInRequest
+			billingAccountNumber.setValue(DataUtil.sanitizeString(moveInRequest
 					.getAccountId()));
 			masterData.setBillingAccountNumber(billingAccountNumber);
 
@@ -189,15 +198,15 @@ public class MoveInProxy {
 			CustomerData customerData = new CustomerData();
 			BPGeneralData bpGeneralData = new BPGeneralData();
 
-			// bpGeneralData.setCustomerType(moveInRequest.isPerson() ? "P" :
-			// "O");
-			bpGeneralData.setCustomerType(2);
+			// 1-person, 2 =organization
+			bpGeneralData.setCustomerType(moveInRequest.isPerson() ? "1" : "2");
+
 			// for new move-in
 			if (false) {
 				EmailAddressGroupType emailAddressGroupType = new EmailAddressGroupType();
 				emailAddressGroupType.getEmailAddress().setValue(
 						"emailAdd@emailAdd.com");
-				emailAddressGroupType.setEffectiveDate(systemTime);
+				emailAddressGroupType.setEffectiveDate(today);
 				EmailCategory emailCategory = new EmailCategory();
 				emailCategory.setValue("PRIMARY EMAIL");
 				emailAddressGroupType.setRemarks(emailCategory);
@@ -219,74 +228,76 @@ public class MoveInProxy {
 				dob.setTime(personalInfo.getBirthDate());
 				personalDataType.setDateOfBirth(dob);
 
-				personalDataType.setEmployerName(sanitizeString(personalInfo
-						.getEmployerName()));
-				personalDataType.setEmployerAddress(sanitizeString(personalInfo
-						.getEmployerAddress()));
+				personalDataType.setEmployerName(DataUtil
+						.sanitizeString(personalInfo.getEmployerName()));
+				personalDataType.setEmployerAddress(DataUtil
+						.sanitizeString(personalInfo.getEmployerAddress()));
 
 				// additional student information
 				if (personalInfo.isStudent()) {
 
 					// to be check
-					// personalDataType.setParentName(sanitizeString(personalInfo
+					// personalDataType.setParentName(DataUtil.sanitizeString(personalInfo
 					// .getStudentInfo().getStudentId()));
 
-					personalDataType.setSchool(sanitizeString(personalInfo
-							.getStudentInfo().getSchoolName()));
-					personalDataType.setParentName(sanitizeString(personalInfo
-							.getStudentInfo().getParentName()));
-					personalDataType
-							.setParentPhoneNumber(sanitizeString(personalInfo
-									.getStudentInfo().getParentPhone()));
-					personalDataType
-							.setParentAddress(sanitizeString(personalInfo
-									.getStudentInfo().getParentAddress()));
+					personalDataType.setSchool(DataUtil
+							.sanitizeString(personalInfo.getStudentInfo()
+									.getSchoolName()));
+					personalDataType.setParentName(DataUtil
+							.sanitizeString(personalInfo.getStudentInfo()
+									.getParentName()));
+					personalDataType.setParentPhoneNumber(DataUtil
+							.sanitizeString(personalInfo.getStudentInfo()
+									.getParentPhone()));
+					personalDataType.setParentAddress(DataUtil
+							.sanitizeString(personalInfo.getStudentInfo()
+									.getParentAddress()));
 				}
 
-				if (!isEmpty(personalInfo.getPersonalIdType())) {
+				if (!DataUtil.isEmpty(personalInfo.getPersonalIdType())) {
 					IdentificationType identificationType1 = new IdentificationType();
 					identificationType1.setIDType(personalInfo
 							.getPersonalIdType());
 					identificationType1.setIdentificationNumber(personalInfo
 							.getPersonalId());
-					identificationType1.setEffectiveDate(systemTime);
+					identificationType1.setEffectiveDate(today);
 					customerData.getIdentification().add(identificationType1);
 				}
-				if (!isEmpty(personalInfo.getPhotoIdType())) {
+				if (!DataUtil.isEmpty(personalInfo.getPhotoIdType())) {
 					IdentificationType identificationType = new IdentificationType();
 					identificationType.setIDType(personalInfo.getPhotoIdType());
 					identificationType.setIdentificationNumber(personalInfo
 							.getPhotoIdType());
-					identificationType.setEffectiveDate(systemTime);
+					identificationType.setEffectiveDate(today);
 					customerData.getIdentification().add(identificationType);
 				}
 
 				// customer phone numbers
-				if (!isEmpty(moveInRequest.getResiPhone())) {
+				if (!DataUtil.isEmpty(moveInRequest.getResiPhone())) {
 					customerData.getPhoneNumbers().add(
 							createPhoneNumber("RESIDENTIAL",
 									moveInRequest.getResiPhone(), null,
-									systemTime));
+									today));
 				}
 
-				if (!isEmpty(moveInRequest.getCellPhoneNumber())) {
+				if (!DataUtil.isEmpty(moveInRequest.getCellPhoneNumber())) {
 					customerData.getPhoneNumbers().add(
 							createPhoneNumber("MOBILE",
 									moveInRequest.getCellPhoneNumber(), null,
-									systemTime));
+									today));
 				}
-				if (!isEmpty(moveInRequest.getBizPhone())) {
+				if (!DataUtil.isEmpty(moveInRequest.getBizPhone())) {
 					customerData
 							.getPhoneNumbers()
 							.add(createPhoneNumber("WORK",
 									moveInRequest.getBizPhone(),
-									moveInRequest.getBizPhoneExt(), systemTime));
+									moveInRequest.getBizPhoneExt(), today));
 				}
-				if (!isEmpty(moveInRequest.getNotifyPhoneNumber())) {
+				if (!DataUtil.isEmpty(moveInRequest.getNotifyPhoneNumber())) {
 					customerData.getPhoneNumbers().add(
 							createPhoneNumber("NOTIFICATION",
 									moveInRequest.getNotifyPhoneNumber(), null,
-									systemTime));
+									today));
 				}
 				// customer present/past address
 				// TO BE checked
@@ -320,25 +331,27 @@ public class MoveInProxy {
 					businessData.setBusinessType("Private");
 
 					OwnerInfo ownerInfo = new OwnerInfo();
-					ownerInfo.setOwnerName(sanitizeString(businessPrivate
-							.getOwnerName()));
-					ownerInfo.setDateOfBirth(dateToCalendar(businessPrivate
-							.getBirthDate()));
-					ownerInfo.setPhoneNumber(sanitizeString(businessPrivate
-							.getPhoneNumber()));
+					ownerInfo.setOwnerName(DataUtil
+							.sanitizeString(businessPrivate.getOwnerName()));
+					ownerInfo.setDateOfBirth(DataUtil
+							.dateToCalendar(businessPrivate.getBirthDate()));
+					ownerInfo.setPhoneNumber(DataUtil
+							.sanitizeString(businessPrivate.getPhoneNumber()));
 					businessData.getOwnerInfo().add(ownerInfo);
 
 					ownerInfo.setDriverLicenceNumber(businessPrivate
 							.getDriverLicense());
 					EmailAddressType eat = new EmailAddressType();
-					eat.setValue(sanitizeString(businessPrivate.getEmail()));
+					eat.setValue(DataUtil.sanitizeString(businessPrivate
+							.getEmail()));
 					ownerInfo.setEmailAddress(eat);
 
 					ownerInfo.setPosition(businessPrivate.getPosition());
 
 				}
-				
-				System.out.println("moveInRequest.getBusinessContacts() "+moveInRequest.getBusinessContacts());
+
+				System.out.println("moveInRequest.getBusinessContacts() "
+						+ moveInRequest.getBusinessContacts());
 
 				// business contact
 				List<BusinessContact> bizContacts = mapper.readValue(
@@ -351,14 +364,14 @@ public class MoveInProxy {
 						ContactInfo contactInfo = new ContactInfo();
 
 						EmailAddressType emailAddressType = new EmailAddressType();
-						emailAddressType
-								.setValue(sanitizeString(bc.getEmail()));
+						emailAddressType.setValue(DataUtil.sanitizeString(bc
+								.getEmail()));
 						contactInfo.setEmailAddress(emailAddressType);
 						contactInfo.setContactName(bc.getName());
 						contactInfo.setPhoneNumber(bc.getPhoneNumber());
 						// DJ contactInfo.setPostion(bc.getPosition());
 
-						businessData.getContactInfo().add(contactInfo);						
+						businessData.getContactInfo().add(contactInfo);
 					}
 				}
 			}
@@ -381,7 +394,7 @@ public class MoveInProxy {
 		phoneNumber.setValue(phone);
 		phoneNumberType.setPhoneNumber(phoneNumber);
 
-		if (!isEmpty(ext)) {
+		if (!DataUtil.isEmpty(ext)) {
 			Extension extension = new Extension();
 			extension.setValue(ext);
 			// phoneNumberType.setExtension(extension);
@@ -395,31 +408,6 @@ public class MoveInProxy {
 		phoneNumberType.setCountryCode(countryCodeType);
 		phoneNumberType.setEffectiveDate(effDate);
 		return phoneNumberType;
-	}
-
-	private static String sanitizeStringRemoveWS(String s) {
-		if (s == null || s.isEmpty()) {
-			return "";
-		}
-		return s.replaceAll("\\s+", "");
-
-	}
-
-	private static boolean isEmpty(String s) {
-		return (s == null || s.isEmpty());
-	}
-
-	private static String sanitizeString(String s) {
-		if (s == null || s.isEmpty()) {
-			return "";
-		}
-		return s;
-	}
-
-	private static Calendar dateToCalendar(Date d) {
-		Calendar c = Calendar.getInstance();
-		c.setTime(d);
-		return c;
 	}
 
 }

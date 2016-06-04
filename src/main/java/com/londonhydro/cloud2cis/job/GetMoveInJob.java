@@ -66,7 +66,7 @@ public class GetMoveInJob extends AbstractJob {
 						logger.info("Data sent to CIS. Acknowledge the request " + sq.getTransactionId());
 					}
 					MultivaluedMap<String, String> formParams = addFormParams(moveInRequestList);
-					response = restEasyUtils.invokeCall("http://10.111.3.87:8080", moveInEndPoint, null, formParams, null, null,
+					response = restEasyUtils.invokeCall(lhServer, moveInEndPoint, null, formParams, null, null,
 							RestEasyUtils.HTTP_METHOD.PUT);
 
 					if (response.getStatus() != 200) {
@@ -117,8 +117,9 @@ public class GetMoveInJob extends AbstractJob {
 		Map<Long, Long> transactions = new HashMap<Long, Long>();
 		for (MoveInRequest serverQueue : serverQueues) {
 			String transactionId = serverQueue.getTransactionId().toString();
-			if (!transactions.containsValue(serverQueue.getTransactionId()))
-				formParameters.add("transactionId", transactionId);
+			if (!transactions.containsValue(serverQueue.getTransactionId())) {
+				formParameters.add("moveinRequestId", transactionId);
+			}
 			transactions.put(serverQueue.getTransactionId(), serverQueue.getTransactionId());
 		}
 		return formParameters;
