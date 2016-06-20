@@ -44,11 +44,11 @@ public abstract class SAPAbstractJob {
 	String sapWSEndPoint;
 
 	@Inject
-	@Named("com.londonhydro.broker.jobs.queues.transactionLimit")
+	@Named("com.londonhydro.cloud2cis.jobs.queues.transactionLimit")
 	int transactionLimit;
 
 	@Inject
-	@Named("com.londonhydro.broker.jobs.queues.transactionSeed")
+	@Named("com.londonhydro.cloud2cis.jobs.queues.transactionSeed")
 	long transactionSeed;
 
 	private static AtomicLong atomicTransactionSeed;

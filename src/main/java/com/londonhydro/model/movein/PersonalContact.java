@@ -15,8 +15,8 @@ public class PersonalContact implements Cloneable, Serializable {
 	private String cellPhoneNumber;
 	@JsonProperty("resiPhone")
 	private String resiPhone;
-	@JsonProperty("notifyPhoneNumber")
-	private String notifyPhoneNumber;
+	@JsonProperty("notificationPhone")
+	private String notificationPhone;
 
 	public String getBizPhone() {
 		return bizPhone;
@@ -50,11 +50,11 @@ public class PersonalContact implements Cloneable, Serializable {
 		this.resiPhone = resiPhone;
 	}
 
-	public String getNotifyPhoneNumber() {
-		return notifyPhoneNumber;
+	public String getNotificationPhone() {
+		return notificationPhone;
 	}
 
-	public void setNotifyPhoneNumber(String notifyPhoneNumber) {
-		this.notifyPhoneNumber = notifyPhoneNumber;
+	public void setNotificationPhone(String notifyPhoneNumber) {
+		this.notificationPhone = notifyPhoneNumber;
 	}
 }

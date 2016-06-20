@@ -306,7 +306,7 @@ public class MoveinRequestVO implements Serializable {
 			moveInRequest.setBizPhoneExt(this.getPersonalContact().getBizPhoneExt());
 			moveInRequest.setResiPhone(this.getPersonalContact().getResiPhone());
 			moveInRequest.setCellPhoneNumber(this.getPersonalContact().getCellPhoneNumber());
-			moveInRequest.setNotifyPhoneNumber(this.getPersonalContact().getNotifyPhoneNumber());
+			moveInRequest.setNotifyPhoneNumber(this.getPersonalContact().getNotificationPhone());
 		}
 		if (this.getCurrentAddress() != null)
 			moveInRequest.setCurrentAddress(this.getCurrentAddress().toString());

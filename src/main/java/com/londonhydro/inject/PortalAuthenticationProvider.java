@@ -44,13 +44,13 @@ public class PortalAuthenticationProvider implements Provider<LoginResult>
     private String serverUrl;
     private String apiLoginEndPoint;
     
-    @Inject @Named("londonhydro.broker.api.authorization.enabled")
+    @Inject @Named("londonhydro.cloud2cis.api.authorization.enabled")
     private boolean authorizationEnabled; 
     
     @Inject
-    public PortalAuthenticationProvider(@Named("londonhydro.broker.api.login.username") String username, @Named("londonhydro.broker.api.login.password") String password, 
-            @Named("com.londonhydro.lh.server.url") String serverUrl, @Named("londonhydro.broker.api.public.login.endPoint") String apiLoginEndPoint,
-            @Named("londonhydro.broker.api.public.login.delay") boolean delay)
+    public PortalAuthenticationProvider(@Named("londonhydro.cloud2cis.api.login.username") String username, @Named("londonhydro.cloud2cis.api.login.password") String password, 
+            @Named("com.londonhydro.lh.server.url") String serverUrl, @Named("londonhydro.cloud2cis.api.public.login.endPoint") String apiLoginEndPoint,
+            @Named("londonhydro.cloud2cis.api.public.login.delay") boolean delay)
     {
         this.username = username;
         this.password = password;

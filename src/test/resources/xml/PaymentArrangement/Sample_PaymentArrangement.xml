@@ -1,0 +1,17 @@
+<ServiceQueue>
+	<BusinessProcess5 Type="PaymentArrangement" ProcessID="123456789"
+		DateTime="06-16-2016 06:14:58">
+		<PaymentArrangementHeader>
+			<CustomerNumber>484243</CustomerNumber>
+			<BillingAccountNumber>50571697</BillingAccountNumber>
+			<PaymentTotal>123.45</PaymentTotal>
+		</PaymentArrangementHeader>
+		<PaymentArrangementDetails>
+			<ArrangementItem ItemNo="231">
+				<PaymentDate>05-31-2016</PaymentDate>
+				<Amount>123.45</Amount>
+				<PaymentMethod>F</PaymentMethod>
+			</ArrangementItem>
+		</PaymentArrangementDetails>
+	</BusinessProcess5>
+</ServiceQueue>

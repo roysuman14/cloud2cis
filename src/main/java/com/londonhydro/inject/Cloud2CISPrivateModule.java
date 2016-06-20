@@ -37,12 +37,15 @@ public abstract class Cloud2CISPrivateModule extends PrivateModule {
 	private static final Log logger = LogFactory.getLog(Cloud2CISPrivateModule.class);
 
 	protected static Properties getProperties() {
-		Properties properties = PropertiesUtil.getInstance().loadProperties("/cloud2cis.properties");
 		String path = System.getProperty("cloud2cis.properties.path");
+		Properties properties = PropertiesUtil.getInstance().loadProperties("/cloud2cis.properties");
 		if (path != null && properties != null) {
 			logger.info("Overwriting default properties from: " + path);
 			properties.putAll(PropertiesUtil.getInstance().loadProperties(path));
-		}
+		}		
+		Properties properties2 = PropertiesUtil.getInstance().loadProperties("/cloud2cis-cron.properties");
+		properties.putAll(properties2);
+		
 
 		return properties;
 	}

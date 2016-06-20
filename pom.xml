@@ -7,6 +7,7 @@
 	<packaging>war</packaging>
 
 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.javaVersion>1.6</project.build.javaVersion>
@@ -40,7 +41,9 @@
 		<runSuite>**/BrokerDAOTestSuite.class</runSuite>
 		<broker.properties>/broker.properties</broker.properties>
 	</properties>
-
+	<build>
+		<finalName>cloud2cis</finalName>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>com.londonhydro</groupId>

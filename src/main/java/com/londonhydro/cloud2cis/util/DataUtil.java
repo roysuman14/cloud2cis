@@ -1,5 +1,7 @@
 package com.londonhydro.cloud2cis.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -32,5 +34,15 @@ public class DataUtil {
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		return c;
+	}
+	
+	public static Date yyyymmddToDate(String d) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			return formatter.parse(d);
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

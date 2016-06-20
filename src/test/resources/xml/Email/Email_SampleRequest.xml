@@ -1,0 +1,11 @@
+<ServiceQueue>
+	<BusinessProcess1 Type="ChangeEmailAddress" ProcessID="10"
+		DateTime="04-19-2016 11:20:06">
+		<MasterData>
+			<CustomerNumber>63421</CustomerNumber>
+			<EffectiveDate>04-19-2016</EffectiveDate>
+			<EmailAddress>ljstewart@rogers.com</EmailAddress>
+			<Remarks></Remarks>
+		</MasterData>
+	</BusinessProcess1>
+</ServiceQueue>

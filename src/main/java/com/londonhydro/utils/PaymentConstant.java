@@ -1,0 +1,13 @@
+package com.londonhydro.utils;
+
+public interface PaymentConstant {
+	
+	String PAYMENT_METHOD_BANK="BNK";
+	String PAYMENT_METHOD_BANK_CIS_CODE="F";
+	String PAYMENT_METHOD_LH_DROPBOX="LHD";
+	String PAYMENT_METHOD_LH_DROPBOX_CIS_CODE="3";
+	String PAYMENT_METHOD_CREDIT_CARD="CCD";
+	String PAYMENT_METHOD_CREDIT_CARD_CIS_CODE="8";
+	String PAYMENT_METHOD_MAIL="MAL";
+	String PAYMENT_METHOD_MAIL_CIS_CODE="4";
+}

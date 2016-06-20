@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2016 (http://www.altova.com) by Ajay (Raytech) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:as="http://www.oasis-open.org/committees/cam" xmlns:camed="http://jcam.org.uk/editor"
+	xmlns:dblook="http://jcam.org.uk/DbLookupLists" xmlns:look="http://jcam.org.uk/LookupLists"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
+	jaxb:extensionBindingPrefixes="xjc" elementFormDefault="qualified"
+	version="0.1" jaxb:version="2.0">
+	<xsd:annotation>
+		<xsd:documentation>NOTICE: Generated from CAM template by XSLT
+			NOTICE:
+			This schema is designed to maximize software interoperability and
+			uses basic XSD Schema constructs only.
+
+			CAM Template Header
+			information:
+
+			Description: My Account Business Process
+			Owner: Eko
+			Suharto
+			Date: 2013-07-30T12:48:07
+			Version: 0.1
+			XSD generator: v1.63
+			NS
+			Mode: true
+			XSDOutput Mode: default
+			NOTICE: Please refer to the original
+			source owner schema, dictionary, and/or
+			CAM template for updates and
+			changes.
+			NOTICE: For copyright, licensing and use criteria please
+			refer to owner
+			authority.
+			**********************************************************************************************************
+			Jan-2016 janad XSD change for MIMO enhancement
+			Apr-2016 roysu XSD change for MIMO enhancement
+		</xsd:documentation>
+		<xsd:appinfo source="CAM">
+			<jaxb:globalBindings>
+				<xjc:javaType name="java.util.Calendar" xmlType="xsd:date"
+					adapter="com.londonhydro.util.jaxb.DateAdapter" />
+				<xjc:javaType name="java.util.Calendar" xmlType="xsd:dateTime"
+					adapter="com.londonhydro.util.jaxb.DateTimeAdapter" />
+
+			</jaxb:globalBindings>
+		</xsd:appinfo>
+
+	</xsd:annotation>
+
+
+	<xsd:complexType name="CountryCodeType">
+		<xsd:annotation>
+			<xsd:documentation>The type for CountryCode.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="3" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="EmailAddressType">
+		<xsd:annotation>
+			<xsd:documentation>The type for EmailAddress.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="241" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="CONameType">
+		<xsd:annotation>
+			<xsd:documentation>The type for COName.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="40" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="ReadDateType">
+		<xsd:annotation>
+			<xsd:documentation>The type for ReadDate.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+	<xsd:simpleType name="ReadTimeType">
+		<xsd:annotation>
+			<xsd:documentation>The type for ReadTime.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="AmountType">
+		<xsd:annotation>
+			<xsd:documentation>The type for Amount.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+	<xsd:simpleType name="StartingMonthType">
+		<xsd:annotation>
+			<xsd:documentation>The type for StartingMonth.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+	<xsd:simpleType name="StartingYearType">
+		<xsd:annotation>
+			<xsd:documentation>The type for StartingYear.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string" />
+	</xsd:simpleType>
+
+
+	<xsd:complexType name="PhoneNumberCategory">
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="EmailCategory">
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="50" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="BusinessProcessType">
+		<xsd:attribute name="Type" type="xsd:string" use="required" />
+		<xsd:attribute name="ProcessID" type="xsd:string" use="required" />
+		<xsd:attribute name="DateTime" type="xsd:dateTime" use="required" />
+		<xsd:attribute name="SubType" type="xsd:string" />
+	</xsd:complexType>
+
+	<xsd:complexType name="BillingAccountNumberType">
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="10" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="CustomerNumberType">
+		<xsd:annotation>
+			<xsd:documentation>The type for Customer Number.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:restriction base="xsd:anyType">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:maxLength value="12" />
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:restriction>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:complexType name="MailingAddressType">
+		<xsd:sequence>
+			<xsd:element name="HouseNumber1" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StreetName" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="60" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Unit" minOccurs="0" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="City" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Province" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PostalCode" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Country" minOccurs="1" maxOccurs="1">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="3" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Non-CivicInformation1" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Non-CivicInformation2" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="40" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="COName" minOccurs="0" type="CONameType">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="PhoneNumberType">
+		<xsd:sequence>
+			<xsd:element name="EffectiveDate" type="xsd:date" />
+			<xsd:element name="CountryCode" type="CountryCodeType">
+			</xsd:element>
+			<xsd:element name="PhoneNumber">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="30" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:restriction base="xsd:anyType">
+							<xsd:simpleType>
+								<xsd:restriction base="xsd:string">
+									<xsd:maxLength value="10" />
+								</xsd:restriction>
+							</xsd:simpleType>
+						</xsd:restriction>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Remarks" type="PhoneNumberCategory">
+				<xsd:annotation>
+					<xsd:documentation>Available value: Home Work Mobile
+						Notification RESIDENTIAL BUSINESS/WORK NOTIFICATION CELL FAX
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="EmailAddressGroupType">
+		<xsd:sequence>
+			<xsd:element name="EffectiveDate" type="xsd:date" />
+			<xsd:element name="EmailAddress" type="EmailAddressType">
+			</xsd:element>
+			<xsd:element name="Remarks" type="EmailCategory">
+				<xsd:annotation>
+					<xsd:documentation>Available value: PRIMARY EMAIL or
+						NOTIFICATION
+						EMAIL
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="IdentificationType">
+		<xsd:sequence>
+			<xsd:element name="IDType" type="xsd:anyType" />
+			<xsd:element name="IdentificationNumber" type="xsd:anyType" />
+			<xsd:element name="EffectiveDate" type="xsd:date"
+				minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="BusinessProcess0Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e75" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e82"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="EffectiveDate" type="xsd:date"
+									id="d2e89" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="CountryCode" id="d2e96"
+									minOccurs="1" maxOccurs="1" type="CountryCodeType">
+
+								</xsd:element>
+								<xsd:element name="PhoneNumber" id="d2e103"
+									minOccurs="1" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Extension" id="d2e111" minOccurs="0"
+									maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="10" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Remarks" id="d2e120" minOccurs="1"
+									maxOccurs="1" type="PhoneNumberCategory">
+									<xsd:annotation>
+										<xsd:documentation>Available value: Home Work Mobile
+											Notification
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="BusinessProcess1Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e166" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e173"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="EffectiveDate" type="xsd:date"
+									id="d2e180" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="EmailAddress" id="d2e187"
+									minOccurs="1" maxOccurs="1" type="EmailAddressType">
+
+								</xsd:element>
+								<xsd:element name="Remarks" minOccurs="0"
+									type="PhoneNumberCategory">
+									<xsd:annotation>
+										<xsd:documentation>Available value: Home Work Mobile
+											Notification
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess2Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e227" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e234"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e241"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+
+								</xsd:element>
+								<xsd:element name="Paperless" id="d2e248" minOccurs="1"
+									maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Paperless indicator, only accept 'Y' or
+											'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess3Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e294" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e301"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="EffectiveDate" type="xsd:date"
+									id="d2e343" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="MailingAddress" id="d2e350"
+									minOccurs="1" maxOccurs="1" type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess4Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MeterNumber" id="d2e444" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:simpleContent>
+								<xsd:restriction base="xsd:anyType">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="18" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:restriction>
+							</xsd:simpleContent>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="ReadDate" type="ReadDateType" id="d2e451"
+						minOccurs="1" maxOccurs="1" />
+					<xsd:element name="ReadTime" type="ReadTimeType" id="d2e459"
+						minOccurs="1" maxOccurs="1" />
+					<xsd:element name="MeterReading" id="d2e466" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:simpleContent>
+								<xsd:restriction base="xsd:anyType">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:maxLength value="36" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:restriction>
+							</xsd:simpleContent>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+	<xsd:complexType name="BusinessProcess5Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="PaymentArrangementHeader" id="d2e505"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e512"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e519"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+
+								</xsd:element>
+								<xsd:element name="PaymentTotal" type="AmountType"
+									id="d2e526" minOccurs="1" maxOccurs="1" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="PaymentArrangementDetails" id="d2e534"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="ArrangementItem" id="d2e541"
+									minOccurs="1" maxOccurs="unbounded">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="PaymentDate" type="xsd:date"
+												id="d2e555" minOccurs="1" maxOccurs="1" />
+											<xsd:element name="Amount" type="AmountType" id="d2e562"
+												minOccurs="1" maxOccurs="1" />
+											<xsd:element name="PaymentMethod" id="d2e569"
+												minOccurs="1" maxOccurs="1">
+												<xsd:complexType>
+													<xsd:simpleContent>
+														<xsd:restriction base="xsd:anyType">
+															<xsd:simpleType>
+																<xsd:restriction base="xsd:string">
+																	<xsd:maxLength value="1" />
+																</xsd:restriction>
+															</xsd:simpleType>
+														</xsd:restriction>
+													</xsd:simpleContent>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+										<xsd:attribute name="ItemNo" type="xsd:string"
+											use="required" id="d2e547" />
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="BusinessProcess6Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e610" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e617"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e624"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="PaymentDetail" id="d2e632"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PaymentDate" type="xsd:date" id="d2e639"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Amount" type="AmountType" id="d2e646"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="PaymentMethod" id="d2e653"
+									minOccurs="1" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="ConfirmationNumber" id="d2e660"
+									minOccurs="1" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="40" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess7Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e700" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e707"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e714"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="MoveOut" id="d2e750" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="MoveOutDate" type="xsd:date" id="d2e757"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Premise" id="d2e764" minOccurs="1"
+									maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="10" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddressControl" id="d2e1013"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Mailing address control, only accept
+											'S'
+											or
+											'F' S = Standard F = Fixed
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="PhoneNumber" id="d2e771"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="SellingPremise" id="d2e780"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Selling premise, only accept 'Y' or 'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerName" id="d2e794"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerPhoneNumber" id="d2e803"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerName" id="d2e812"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerPhoneNumber" id="d2e821"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MoveOutProvince" id="d2e830"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddress" id="d2e839"
+									minOccurs="1" maxOccurs="1" type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess8Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e932" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e939"
+									minOccurs="0" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e946"
+									minOccurs="0" maxOccurs="1" type="BillingAccountNumberType">
+
+								</xsd:element>
+								<xsd:element name="ResuseAccountNumber" id="d2e947"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Reuse or create new contract account ,
+											only
+											accept 'Y' or 'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="CustomerData" minOccurs="0">
+									<xsd:complexType>
+										<xsd:sequence>
+											<xsd:element name="BPGeneralData">
+												<xsd:complexType>
+													<xsd:sequence>
+														<xsd:element name="CustomerType" type="xsd:anyType" />
+														<xsd:element name="PersonalData" minOccurs="0">
+															<xsd:complexType>
+																<xsd:sequence>
+																	<xsd:element name="FirstName" type="xsd:anyType" />
+																	<xsd:element name="MiddleName" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="LastName" type="xsd:anyType" />
+																	<xsd:element name="DateOfBirth" type="xsd:date" />
+																	<xsd:element name="EmployerName" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="EmployerAddress" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="SchoolName" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="ParentName" type="xsd:anyType"
+																		minOccurs="0" />																																		
+																	<xsd:element name="ParentAddress" type="xsd:anyType"
+																		minOccurs="0" />																	
+																	<xsd:element name="CurrentAddress" type="xsd:anyType"
+																		minOccurs="1" />
+																	<xsd:element name="PreviosuAddress" type="xsd:anyType"
+																		minOccurs="0" />
+																</xsd:sequence>
+															</xsd:complexType>
+														</xsd:element>
+														<xsd:element name="BusinessData" minOccurs="0">
+															<xsd:complexType>
+																<xsd:sequence>
+																	<xsd:element name="BusinessCategory" type="xsd:anyType"
+																		minOccurs="1" maxOccurs="1"/>
+																	<xsd:element name="CompanyName" type="xsd:anyType" />
+																	<xsd:element name="TradingName" type="xsd:anyType" />
+																	<xsd:element name="BusinessType" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="Website" type="xsd:anyType"
+																		minOccurs="0" />
+																	<xsd:element name="EmailAddress" type="EmailAddressType"
+																					minOccurs="1"  maxOccurs="1"/>																		
+																	<xsd:element name="OwnerInfo" minOccurs="0"
+																		maxOccurs="unbounded">
+																		<xsd:complexType>
+																			<xsd:sequence>
+																				<xsd:element name="OwnerName" type="xsd:anyType" minOccurs="1"/>
+																				<xsd:element name="DateOfBirth" type="xsd:date"
+																					minOccurs="1" />																					
+																				<xsd:element name="Position" type="xsd:anyType"
+																					minOccurs="0" />																																								
+																				<xsd:element name="DriverLicenceNumber"
+																					type="xsd:anyType" minOccurs="0" />																																																											
+																			</xsd:sequence>
+																		</xsd:complexType>
+																	</xsd:element>
+																	<xsd:element name="ContactInfo" minOccurs="1"
+																		maxOccurs="unbounded">
+																		<xsd:complexType>
+																			<xsd:sequence>
+																				<xsd:element name="ContactName" type="xsd:anyType" minOccurs="1"  maxOccurs="1" />
+																				<xsd:element name="Position" type="xsd:anyType" minOccurs="0"  maxOccurs="1" />																					
+																				<xsd:element name="PhoneNumber" type="xsd:anyType" minOccurs="1"  maxOccurs="1"  />
+																				<xsd:element name="EmailAddress" type="EmailAddressType"
+																					minOccurs="1"  maxOccurs="1"/>																																							
+																			</xsd:sequence>
+																		</xsd:complexType>
+																	</xsd:element>
+																</xsd:sequence>
+															</xsd:complexType>
+														</xsd:element>
+													</xsd:sequence>
+												</xsd:complexType>
+											</xsd:element>
+											<xsd:element name="PhoneNumbers" maxOccurs="unbounded"
+												type="PhoneNumberType">
+											</xsd:element>
+											<xsd:element name="EmailAddresses" maxOccurs="unbounded"
+												type="EmailAddressGroupType">
+											</xsd:element>
+											<xsd:element name="Identification" minOccurs="0"
+												maxOccurs="unbounded" type="IdentificationType">
+											</xsd:element>
+											<xsd:element name="IdentificationCheck" id="d2e1014"
+												minOccurs="1" maxOccurs="1">
+												<xsd:annotation>
+													<xsd:documentation>TransUnion IdentificationCheck,
+														Available Value: PASS/FAIL/SKIP
+													</xsd:documentation>
+												</xsd:annotation>
+												<xsd:complexType>
+													<xsd:simpleContent>
+														<xsd:restriction base="xsd:anyType">
+															<xsd:simpleType>
+																<xsd:restriction base="xsd:string">
+																	<xsd:maxLength value="4" />
+																</xsd:restriction>
+															</xsd:simpleType>
+														</xsd:restriction>
+													</xsd:simpleContent>
+												</xsd:complexType>
+											</xsd:element>
+											<xsd:element name="CreditReportCheck" id="d2e1015"
+												minOccurs="1" maxOccurs="1">
+												<xsd:annotation>
+													<xsd:documentation>TransUnion CreditReportCheck,
+														Available Value: PASS/FAIL/SKIP
+													</xsd:documentation>
+												</xsd:annotation>
+												<xsd:complexType>
+													<xsd:simpleContent>
+														<xsd:restriction base="xsd:anyType">
+															<xsd:simpleType>
+																<xsd:restriction base="xsd:string">
+																	<xsd:maxLength value="4" />
+																</xsd:restriction>
+															</xsd:simpleType>
+														</xsd:restriction>
+													</xsd:simpleContent>
+												</xsd:complexType>
+											</xsd:element>
+										</xsd:sequence>
+									</xsd:complexType>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="MoveIn" id="d2e982" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="MoveInDate" type="xsd:date" id="d2e989"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Premise" id="d2e996" minOccurs="1"
+									maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="10" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddressControl" id="d2e1003"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Mailing address control, only accept
+											'S'
+											or
+											'F' S = Standard F = Fixed
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="BuyingPremise" id="d2e1016"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Buying premise , only accept 'Y' or 'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerName" id="d2e1030"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerPhoneNumber" id="d2e1039"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="OwnerName" id="d2e1048"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="OwnerPhoneNumber" id="d2e1057"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddress" id="d2e1066"
+									minOccurs="1" maxOccurs="1" type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="BusinessProcess9Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e1159" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e1166"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e1173"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="MoveOut" id="d2e1209" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="MoveOutDate" type="xsd:date" id="d2e1216"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Premise" id="d2e1223" minOccurs="1"
+									maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="10" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddressControl" id="d2e1004"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Mailing address control, only accept
+											'S'
+											or
+											'F' S = Standard F = Fixed
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="PhoneNumber" id="d2e1230"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="SellingPremise" id="d2e1239"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Selling premise, only accept 'Y' or 'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerName" id="d2e1253"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerPhoneNumber" id="d2e1262"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerName" id="d2e1271"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerPhoneNumber" id="d2e1280"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddress" id="d2e1289"
+									minOccurs="1" maxOccurs="1" type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="MoveIn" id="d2e1351" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="MoveInDate" type="xsd:date" id="d2e1358"
+									minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Premise" id="d2e1365" minOccurs="1"
+									maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="10" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddressControl" id="d2e1372"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Mailing address control, only accept
+											'S'
+											or
+											'F' S = Standard F = Fixed
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="BuyingPremise" id="d2e1385"
+									minOccurs="1" maxOccurs="1">
+									<xsd:annotation>
+										<xsd:documentation>Buying premise , only accept 'Y' or 'N'
+										</xsd:documentation>
+									</xsd:annotation>
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="1" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerName" id="d2e1399"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="LawyerPhoneNumber" id="d2e1408"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerName" id="d2e1417"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="NewOwnerPhoneNumber" id="d2e1426"
+									minOccurs="0" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="30" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="MailingAddress" id="d2e1435"
+									minOccurs="1" maxOccurs="1" type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess10Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e1529" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e1536"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e1543"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="BudgetBillingDetail" id="d2e1551"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="PaymentPlanType" id="d2e1558"
+									minOccurs="1" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="4" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="StartingMonth" type="StartingMonthType"
+									id="d2e1565" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="StartingYear" type="StartingYearType"
+									id="d2e1572" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="SuggestedAmount" type="AmountType"
+									id="d2e1579" minOccurs="1" maxOccurs="1" />
+								<xsd:element name="Amount" type="AmountType" id="d2e1587"
+									minOccurs="1" maxOccurs="1" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess11Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData" id="d2e1627" minOccurs="1"
+						maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" id="d2e1634"
+									minOccurs="1" maxOccurs="1" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" id="d2e1641"
+									minOccurs="1" maxOccurs="1" type="BillingAccountNumberType">
+
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="BudgetBillingDetail" id="d2e1649"
+						minOccurs="1" maxOccurs="1">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="BudgetBillingPlanNumber" id="d2e1656"
+									minOccurs="1" maxOccurs="1">
+									<xsd:complexType>
+										<xsd:simpleContent>
+											<xsd:restriction base="xsd:anyType">
+												<xsd:simpleType>
+													<xsd:restriction base="xsd:string">
+														<xsd:maxLength value="12" />
+													</xsd:restriction>
+												</xsd:simpleType>
+											</xsd:restriction>
+										</xsd:simpleContent>
+									</xsd:complexType>
+								</xsd:element>
+								<xsd:element name="Amount" type="AmountType" id="d2e1663"
+									minOccurs="1" maxOccurs="1" />
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess12Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="BillingAccountNumber" type="BillingAccountNumberType">
+
+								</xsd:element>
+								<xsd:element name="EffectiveDate" type="xsd:date" />
+								<xsd:element name="AdressNumber" type="xsd:anyType"
+									minOccurs="1" />
+								<xsd:element name="MailingAddress" minOccurs="0"
+									type="MailingAddressType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessProcess13Type">
+		<xsd:complexContent>
+			<xsd:extension base="BusinessProcessType">
+				<xsd:sequence>
+					<xsd:element name="MasterData">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="CustomerNumber" type="CustomerNumberType">
+								</xsd:element>
+								<xsd:element name="EffectiveDate" type="xsd:date" />
+								<xsd:element name="DateOfBirth" type="xsd:date"
+									minOccurs="0" />
+								<xsd:element name="Identification" minOccurs="0"
+									maxOccurs="unbounded" type="IdentificationType">
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+
+
+	<xsd:element name="ServiceQueue" id="d2e37">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="BusinessProcess0" id="d2e44"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess0Type">
+
+				</xsd:element>
+				<xsd:element name="BusinessProcess1" id="d2e135"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess1Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess2" id="d2e196"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess2Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess3" id="d2e263"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess3Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess4" id="d2e413"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess4Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess5" id="d2e474"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess5Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess6" id="d2e579"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess6Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess7" id="d2e669"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess7Type">
+
+				</xsd:element>
+				<xsd:element name="BusinessProcess8" id="d2e901"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess8Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess9" id="d2e1128"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess9Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess10" id="d2e1498"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess10Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess11" id="d2e1596"
+					minOccurs="1" maxOccurs="unbounded" type="BusinessProcess11Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess12" maxOccurs="unbounded"
+					type="BusinessProcess12Type">
+				</xsd:element>
+				<xsd:element name="BusinessProcess13" maxOccurs="unbounded"
+					type="BusinessProcess13Type">
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<!-- Parent complexTypes -->
+	<!-- Local simpleTypes (default namespace) -->
+
+</xsd:schema>

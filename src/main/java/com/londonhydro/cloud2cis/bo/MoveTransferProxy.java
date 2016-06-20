@@ -35,6 +35,7 @@ import com.londonhydro.sap.model.MailingAddressType.Province;
 import com.londonhydro.sap.model.MailingAddressType.StreetName;
 import com.londonhydro.sap.model.MailingAddressType.Unit;
 import com.londonhydro.sap.model.ServiceQueue;
+import com.londonhydro.utils.Constants;
 
 public class MoveTransferProxy {
 	public ServiceQueue marshal(List<TransferRequest> transferRequestList) {
@@ -159,7 +160,7 @@ public class MoveTransferProxy {
 		mailingAddressType.setProvince(province);
 
 		PostalCode postalCode = new PostalCode();
-		postalCode.setValue(DataUtil.sanitizeStringRemoveWS(moveOutRequest
+		postalCode.setValue(DataUtil.sanitizeString(moveOutRequest
 				.getPostalCode()));
 		mailingAddressType.setPostalCode(postalCode);
 
@@ -186,7 +187,7 @@ public class MoveTransferProxy {
 		// previous owner/laywer details
 		BuyingPremise buyingPremise = new BuyingPremise();
 		moveIn.setBuyingPremise(buyingPremise);
-		buyingPremise.setValue(moveInRequest.isBuying() ? "Y" : "N");
+		buyingPremise.setValue(moveInRequest.isBuying() ? Constants.YN_CODE_Y : Constants.YN_CODE_N);
 
 		BusinessProcess9Type.MoveIn.NewOwnerName ownerName = new BusinessProcess9Type.MoveIn.NewOwnerName();
 		ownerName

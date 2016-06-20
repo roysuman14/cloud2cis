@@ -1,0 +1,15 @@
+<ServiceQueue>
+	<BusinessProcess6 Type="PaymentNotification"
+		ProcessID="2345643" DateTime="06-16-2016 04:27:39">
+		<MasterData>
+			<CustomerNumber>65912</CustomerNumber>
+			<BillingAccountNumber>1659129</BillingAccountNumber>
+		</MasterData>
+		<PaymentDetail>
+			<PaymentDate>05-31-2016</PaymentDate>
+			<Amount>643.45</Amount>
+			<PaymentMethod>F</PaymentMethod>
+			<ConfirmationNumber>456</ConfirmationNumber>
+		</PaymentDetail>
+	</BusinessProcess6>
+</ServiceQueue>

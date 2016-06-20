@@ -21,14 +21,15 @@ import com.londonhydro.utils.RestEasyUtils;
 
 public class GetServerQueueJob extends AbstractJob {
 
-	private static final Log logger = LogFactory.getLog(GetServerQueueJob.class);
+	private static final Log logger = LogFactory
+			.getLog(GetServerQueueJob.class);
 
 	@Inject
 	@Named("com.londonhydro.lh.server.url")
 	private String lhServer;
 
 	@Inject
-	@Named("com.londonhydro.broker.jobs.queueService.endPoint")
+	@Named("com.londonhydro.cloud2cis.jobs.queueService.endPoint")
 	private String queueServiceEndPoint;
 
 	@Inject
@@ -46,12 +47,13 @@ public class GetServerQueueJob extends AbstractJob {
 
 			// Getting transactions from LH and storing them in the DB
 
-			response = restEasyUtils.invokeCall(lhServer, queueServiceEndPoint, null, null, null, null,
-					RestEasyUtils.HTTP_METHOD.GET);
+			response = restEasyUtils.invokeCall(lhServer, queueServiceEndPoint,
+					null, null, null, null, RestEasyUtils.HTTP_METHOD.GET);
 
 			if (response.getStatus() == 200) {
-				List<ServerQueue> serverQueues = response.getEntity(new GenericType<List<ServerQueue>>() {
-				});
+				List<ServerQueue> serverQueues = response
+						.getEntity(new GenericType<List<ServerQueue>>() {
+						});
 
 				if (serverQueues != null && !serverQueues.isEmpty()) {
 
@@ -61,47 +63,50 @@ public class GetServerQueueJob extends AbstractJob {
 					// Portal
 					// can move them to the processed table
 					for (ServerQueue sq : serverQueues) {
-						logger.info("Data sent to CIS. Acknowledge the request " + sq.getTransactionId());
+						logger.info("Data sent to CIS. Acknowledge the request "
+								+ sq.getTransactionId());
 					}
 					MultivaluedMap<String, String> formParams = addFormParams(serverQueues);
-					response = restEasyUtils.invokeCall(lhServer, queueServiceEndPoint, null, formParams, null, null,
+					response = restEasyUtils.invokeCall(lhServer,
+							queueServiceEndPoint, null, formParams, null, null,
 							RestEasyUtils.HTTP_METHOD.PUT);
 
 					if (response.getStatus() != 200) {
 
-						logger.error(
-								String.format("| Failed when PUT %s                                               |",
+						logger.error(String
+								.format("| Failed when PUT %s                                               |",
 										queueServiceEndPoint));
-						logger.error(String.format("| Transaction Ids = %s", formParams.get("transactionId")));
+						logger.error(String.format("| Transaction Ids = %s",
+								formParams.get("transactionId")));
 					} else {
-						logger.info(
-								"The following server queue transactions has been processed                                      |");
-						logger.info(String.format("| Transaction Ids = %s", formParams.get("transactionId")));
+						logger.info("The following server queue transactions has been processed                                      |");
+						logger.info(String.format("| Transaction Ids = %s",
+								formParams.get("transactionId")));
 					}
 
 				} else {
 					logger.info("The server queues are empty");
 				}
 
-			}
-
-			else if (response.getStatus() == 400) {
+			} else if (response.getStatus() == 400) {
 				logger.info("No server queues found in the response.");
+			} else {
+				logger.error("Failed when GET " + lhServer
+						+ queueServiceEndPoint);
 			}
-
-			else
-				logger.error("Failed when GET " + lhServer + queueServiceEndPoint);
 
 		} catch (ClientResponseFailure e) {
 
-			logger.error(String.format(
-					"The client failed to connect to the server(" + lhServer
+			logger.error(String
+					.format("The client failed to connect to the server("
+							+ lhServer
 							+ "). Verify the server is up and running - Exception: %s",
-					Throwables.getStackTraceAsString(e)));
+							Throwables.getStackTraceAsString(e)));
 
 		} catch (Exception e) {
 
-			logger.error(String.format("There was an unexpected problem - Exception: %s",
+			logger.error(String.format(
+					"There was an unexpected problem - Exception: %s",
 					Throwables.getStackTraceAsString(e)));
 
 		}
@@ -117,7 +122,8 @@ public class GetServerQueueJob extends AbstractJob {
 			String transactionId = serverQueue.getTransactionId().toString();
 			if (!transactions.containsValue(serverQueue.getTransactionId()))
 				formParameters.add("transactionId", transactionId);
-			transactions.put(serverQueue.getTransactionId(), serverQueue.getTransactionId());
+			transactions.put(serverQueue.getTransactionId(),
+					serverQueue.getTransactionId());
 		}
 		return formParameters;
 	}

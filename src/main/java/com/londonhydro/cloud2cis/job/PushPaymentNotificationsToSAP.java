@@ -1,42 +1,43 @@
 package com.londonhydro.cloud2cis.job;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.londonhydro.cloud2cis.bo.MoveInProxy;
+import com.londonhydro.cloud2cis.bo.PaymentNotificationProxy;
 import com.londonhydro.exception.CISException;
-import com.londonhydro.model.movein.MoveInRequest;
+import com.londonhydro.model.PaymentNotificationQueue;
 import com.londonhydro.sap.SAPErrorCode;
 import com.londonhydro.sap.model.ServiceQueue;
 
 /**
- * Job in charge of sending Server Queues to SAP.
+ * Job in charge of sending Payment Notifications (BusinessProcess6) to SAP.
  * 
- * @author Daniel I. Khan Ramiro (di.khan@affsys.com)
+ * @author TCS
  */
-public class PushMoveInToSAP extends SAPAbstractJob {
-
-	public void execute(List<MoveInRequest> moveInRequestList) throws Exception {
-
-		Map<Long, List<MoveInRequest>> moveInMap = createServerQueuesMap(moveInRequestList);
-
-		if (moveInMap.isEmpty()) {
-			logger.info("There are no MoveIn to be sent.");
-		} else {
+public class PushPaymentNotificationsToSAP extends SAPAbstractJob
+{
+    
+    public void execute(List<PaymentNotificationQueue> paymentNotificationsQueues) throws Exception
+    {
+    	Map<Long, List<PaymentNotificationQueue>> paymentNotificationsQueuesMap  = createServerQueuesMap(paymentNotificationsQueues);
+        
+        if(paymentNotificationsQueuesMap.isEmpty())
+        {
+            logger.info("There are no Payment Noticiation Queues to be sent.");
+        }
+        else
+        {
 			logger.info("Request to sent to SAP. request# "
-					+ moveInRequestList.size() + " map size# "
-					+ moveInMap.size());
-			for (Map.Entry<Long, List<MoveInRequest>> entry : moveInMap
+					+ paymentNotificationsQueues.size() + " map size# "
+					+ paymentNotificationsQueuesMap.size());
+			for (Map.Entry<Long, List<PaymentNotificationQueue>> entry : paymentNotificationsQueuesMap
 					.entrySet()) {
 
 				ServiceQueue sq = new ServiceQueue();
 
-				// QueueTypes serverType =
-				// QueueTypes.valueOf(entry.getValue().get(0).getTransactionDescription());
-				sq = (new MoveInProxy()).marshal(entry.getValue());
+				sq = (new PaymentNotificationProxy()).marshal(entry.getValue());
 				Integer responseStatus = sendServiceQueue(sq);
 				if (responseStatus != null
 						&& responseStatus == SAPErrorCode.SAP_SUCCESS_STATUS_CODE
@@ -60,24 +61,24 @@ public class PushMoveInToSAP extends SAPAbstractJob {
 				}
 
 			}
+        
+        }
+        
+    }
+    
+    private Map<Long, List<PaymentNotificationQueue>> createServerQueuesMap(
+			List<PaymentNotificationQueue> serverQueues) {
 
-		}
+		Map<Long, List<PaymentNotificationQueue>> serverQueueMap = new HashMap<Long, List<PaymentNotificationQueue>>();
 
-	}
-
-	private Map<Long, List<MoveInRequest>> createServerQueuesMap(
-			List<MoveInRequest> serverQueues) {
-
-		Map<Long, List<MoveInRequest>> serverQueueMap = new HashMap<Long, List<MoveInRequest>>();
-
-		for (MoveInRequest serverQueue : serverQueues) {
+		for (PaymentNotificationQueue serverQueue : serverQueues) {
 			if (serverQueueMap.get(serverQueue.getTransactionId()) == null) {
-				List<MoveInRequest> sqList = new ArrayList<MoveInRequest>();
+				List<PaymentNotificationQueue> sqList = new ArrayList<PaymentNotificationQueue>();
 				serverQueueMap.put(serverQueue.getTransactionId(), sqList);
 			}
 			serverQueueMap.get(serverQueue.getTransactionId()).add(serverQueue);
 		}
 		return serverQueueMap;
-	}
-
+	} 
+        
 }

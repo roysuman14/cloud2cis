@@ -25,7 +25,7 @@
 			<DateOfBirth>04-26-2016</DateOfBirth>
 			<Identification>
 				<IDType>HC</IDType>
-				<IdentificationNumber></IdentificationNumber>
+				<IdentificationNumber>789123def</IdentificationNumber>
 				<EffectiveDate>04-26-2016</EffectiveDate>
 			</Identification>
 		</MasterData>

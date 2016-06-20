@@ -31,6 +31,7 @@ import com.londonhydro.sap.model.MailingAddressType.Province;
 import com.londonhydro.sap.model.MailingAddressType.StreetName;
 import com.londonhydro.sap.model.MailingAddressType.Unit;
 import com.londonhydro.sap.model.ServiceQueue;
+import com.londonhydro.utils.Constants;
 
 public class MoveOutProxy {
 	public ServiceQueue marshal(List<MoveOutRequest> moveOutRequestList) {
@@ -151,7 +152,7 @@ public class MoveOutProxy {
 			mailingAddressType.setProvince(province);
 
 			PostalCode postalCode = new PostalCode();
-			postalCode.setValue(DataUtil.sanitizeStringRemoveWS(moveOutRequest
+			postalCode.setValue(DataUtil.sanitizeString(moveOutRequest
 					.getPostalCode()));
 			mailingAddressType.setPostalCode(postalCode);
 
@@ -162,10 +163,9 @@ public class MoveOutProxy {
 
 			moveOut.setMailingAddress(mailingAddressType);
 
-			// Phone Number
-			// ***CHECK: for business /cell phone number
+			// Phone Number NOT used
 			PhoneNumber phoneNumber = new PhoneNumber();
-			phoneNumber.setValue(moveOutRequest.getResiPhone());
+			phoneNumber.setValue(Constants.NOT_APPLICABLE_CODE);
 			moveOut.setPhoneNumber(phoneNumber);
 
 			moveOutInfo.setMoveOut(moveOut);

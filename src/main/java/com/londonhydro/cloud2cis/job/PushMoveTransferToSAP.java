@@ -7,17 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 import com.londonhydro.cloud2cis.bo.MoveTransferProxy;
+import com.londonhydro.exception.CISException;
 import com.londonhydro.model.movein.TransferRequest;
 import com.londonhydro.sap.SAPErrorCode;
 import com.londonhydro.sap.model.ServiceQueue;
 
 public class PushMoveTransferToSAP extends SAPAbstractJob {
-	Calendar systemTime;
 
 	public void execute(List<TransferRequest> transferRequestList)
 			throws Exception {
 
-		systemTime = Calendar.getInstance();
 		Map<Long, List<TransferRequest>> moveInMap = createServerQueuesMap(transferRequestList);
 
 		if (moveInMap.isEmpty()) {
@@ -50,6 +49,7 @@ public class PushMoveTransferToSAP extends SAPAbstractJob {
 							.format("Failed when calling SAP end point [%s] - HTTP Status Code = %d | %s",
 									sapWSEndPoint, sapErrorCode.getCode(),
 									sapErrorCode.getDescription()));
+					throw new CISException(sapErrorCode);
 
 				}
 

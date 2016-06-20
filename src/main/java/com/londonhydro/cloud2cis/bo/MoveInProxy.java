@@ -54,6 +54,10 @@ import com.londonhydro.sap.model.PhoneNumberType;
 import com.londonhydro.sap.model.PhoneNumberType.Extension;
 import com.londonhydro.sap.model.PhoneNumberType.PhoneNumber;
 import com.londonhydro.sap.model.ServiceQueue;
+import com.londonhydro.utils.Constants;
+import com.londonhydro.utils.IdentificationConstant;
+import com.londonhydro.utils.MoveInConstant;
+import com.londonhydro.utils.PhoneNumberConstant;
 
 public class MoveInProxy {
 	protected static final Log logger = LogFactory.getLog(MoveInProxy.class);
@@ -76,8 +80,8 @@ public class MoveInProxy {
 				.getTransactionId())));
 		moveInInfo.setType(QueueTypes.MoveIn.toString());
 		moveInInfo.setDateTime(today);
-		// ******* CHECK: new or existing
-		moveInInfo.setSubType("New");
+		moveInInfo.setSubType("0".equals(moveInRequestList.get(0)
+				.getCustomerId()) ? Constants.BP_SUB_TYPE_NEW : Constants.BP_SUB_TYPE_EXISTING);
 
 		for (MoveInRequest moveInRequest : moveInRequestList) {
 
@@ -98,7 +102,7 @@ public class MoveInProxy {
 			// previous owner/laywer details
 			BuyingPremise buyingPremise = new BuyingPremise();
 			moveIn.setBuyingPremise(buyingPremise);
-			buyingPremise.setValue(moveInRequest.isBuying() ? "Y" : "N");
+			buyingPremise.setValue(moveInRequest.isBuying() ? Constants.YN_CODE_Y : Constants.YN_CODE_N);
 
 			OwnerName ownerName = new OwnerName();
 			ownerName.setValue(DataUtil.sanitizeString(moveInRequest
@@ -168,7 +172,7 @@ public class MoveInProxy {
 			mailingAddress.setProvince(province);
 
 			PostalCode postalCode = new PostalCode();
-			postalCode.setValue(DataUtil.sanitizeStringRemoveWS(moveInRequest
+			postalCode.setValue(DataUtil.sanitizeString(moveInRequest
 					.getPostalCode()));
 			mailingAddress.setPostalCode(postalCode);
 
@@ -191,24 +195,24 @@ public class MoveInProxy {
 
 			ResuseAccountNumber resuseAccountNumber = new ResuseAccountNumber();
 			resuseAccountNumber
-					.setValue(moveInRequest.isReuseExisitngBillNo() ? "YES"
-							: "NO");
+					.setValue(moveInRequest.isReuseExisitngBillNo() ? Constants.YN_CODE_YES
+							: Constants.YN_CODE_NO);
 			masterData.setResuseAccountNumber(resuseAccountNumber);
 
 			CustomerData customerData = new CustomerData();
 			BPGeneralData bpGeneralData = new BPGeneralData();
 
 			// 1-person, 2 =organization
-			bpGeneralData.setCustomerType(moveInRequest.isPerson() ? "1" : "2");
+			bpGeneralData.setCustomerType(moveInRequest.isPerson() ? MoveInConstant.MOVEIN_CUSTOMER_TYPE_PERSON : MoveInConstant
+					.MOVEIN_CUSTOMER_TYPE_ORGANIZATION);
 
 			// for new move-in
 			if (false) {
 				EmailAddressGroupType emailAddressGroupType = new EmailAddressGroupType();
-				emailAddressGroupType.getEmailAddress().setValue(
-						"emailAdd@emailAdd.com");
+				emailAddressGroupType.getEmailAddress().setValue("tobechecked@email.com");
 				emailAddressGroupType.setEffectiveDate(today);
 				EmailCategory emailCategory = new EmailCategory();
-				emailCategory.setValue("PRIMARY EMAIL");
+				emailCategory.setValue(MoveInConstant.MOVEIN_NEW_EMAIL_CATEGORY);
 				emailAddressGroupType.setRemarks(emailCategory);
 				customerData.getEmailAddresses().add(emailAddressGroupType);
 			}
@@ -236,22 +240,27 @@ public class MoveInProxy {
 				// additional student information
 				if (personalInfo.isStudent()) {
 
-					// to be check
-					// personalDataType.setParentName(DataUtil.sanitizeString(personalInfo
-					// .getStudentInfo().getStudentId()));
-
-					personalDataType.setSchool(DataUtil
+					personalDataType.setSchoolName(DataUtil
 							.sanitizeString(personalInfo.getStudentInfo()
 									.getSchoolName()));
 					personalDataType.setParentName(DataUtil
 							.sanitizeString(personalInfo.getStudentInfo()
 									.getParentName()));
-					personalDataType.setParentPhoneNumber(DataUtil
-							.sanitizeString(personalInfo.getStudentInfo()
-									.getParentPhone()));
 					personalDataType.setParentAddress(DataUtil
 							.sanitizeString(personalInfo.getStudentInfo()
 									.getParentAddress()));
+
+					// student id
+					if (!DataUtil.isEmpty(personalInfo.getStudentInfo()
+							.getStudentId())) {
+						IdentificationType studentId = new IdentificationType();
+						// ****** CHECK
+						studentId.setIDType(MoveInConstant.MOVEIN_ID_TYPE_STUDENT);
+						studentId.setIdentificationNumber(personalInfo
+								.getStudentInfo().getStudentId());
+						studentId.setEffectiveDate(today);
+						customerData.getIdentification().add(studentId);
+					}
 				}
 
 				if (!DataUtil.isEmpty(personalInfo.getPersonalIdType())) {
@@ -275,32 +284,46 @@ public class MoveInProxy {
 				// customer phone numbers
 				if (!DataUtil.isEmpty(moveInRequest.getResiPhone())) {
 					customerData.getPhoneNumbers().add(
-							createPhoneNumber("RESIDENTIAL",
-									moveInRequest.getResiPhone(), null,
-									today));
+							createPhoneNumber(PhoneNumberConstant.RESIDENTIAL,
+									moveInRequest.getResiPhone(), null, today));
 				}
 
 				if (!DataUtil.isEmpty(moveInRequest.getCellPhoneNumber())) {
 					customerData.getPhoneNumbers().add(
-							createPhoneNumber("MOBILE",
+							createPhoneNumber(PhoneNumberConstant.MOBILE,
 									moveInRequest.getCellPhoneNumber(), null,
 									today));
 				}
 				if (!DataUtil.isEmpty(moveInRequest.getBizPhone())) {
-					customerData
-							.getPhoneNumbers()
-							.add(createPhoneNumber("WORK",
+					customerData.getPhoneNumbers().add(
+							createPhoneNumber(PhoneNumberConstant.BUSINESS,
 									moveInRequest.getBizPhone(),
 									moveInRequest.getBizPhoneExt(), today));
 				}
 				if (!DataUtil.isEmpty(moveInRequest.getNotifyPhoneNumber())) {
 					customerData.getPhoneNumbers().add(
-							createPhoneNumber("NOTIFICATION",
+							createPhoneNumber(PhoneNumberConstant.NOTIFICATION,
 									moveInRequest.getNotifyPhoneNumber(), null,
 									today));
 				}
+				// for student, parent phone will be store as PARENT
+				if (personalInfo.isStudent()) {
+					if (!DataUtil.isEmpty(personalInfo.getStudentInfo()
+							.getParentPhone())) {
+						customerData
+								.getPhoneNumbers()
+								.add(createPhoneNumber(
+										PhoneNumberConstant.PARENT,
+										personalInfo.getStudentInfo()
+												.getParentPhone(), null, today));
+					}
+				}
+
 				// customer present/past address
-				// TO BE checked
+				personalDataType.setCurrentAddress(moveInRequest
+						.getCurrentAddress());
+				personalDataType.setPreviosuAddress(moveInRequest
+						.getPreviousAddress());
 			} else {
 				// business customer data
 				BusinessData businessData = new BusinessData();
@@ -308,72 +331,169 @@ public class MoveInProxy {
 
 				BusinessIncorporation businessIncorporation = null;
 				BusinessPrivate businessPrivate = null;
-				try {
-					businessIncorporation = mapper.readValue(
-							moveInRequest.getProfileInfo(),
-							BusinessIncorporation.class);
-				} catch (Exception ex) {
-					// try for private
-					businessPrivate = mapper.readValue(
-							moveInRequest.getProfileInfo(),
-							BusinessPrivate.class);
+				if (moveInRequest.getProfileInfo() != null) {
+					try {
+						businessIncorporation = mapper.readValue(
+								moveInRequest.getProfileInfo(),
+								BusinessIncorporation.class);
+					} catch (Exception ex) {
+						// try for private
+						businessPrivate = mapper.readValue(
+								moveInRequest.getProfileInfo(),
+								BusinessPrivate.class);
+					}
 				}
 				if (businessIncorporation != null) {
-					businessData.setBusinessType("Incorporated");
+					businessData.setBusinessCategory(MoveInConstant.MOVEIN_BUSINESS_CATEGORY_INC);
 
 					businessData.setCompanyName(businessIncorporation
 							.getLegalName());
 					businessData.setTradingName(businessIncorporation
 							.getOperatingName());
 					businessData.setWebsite(businessIncorporation.getWebsite());
+					businessData.setBusinessType(businessIncorporation
+							.getBusinessType());
+					EmailAddressType eat = new EmailAddressType();
+					eat.setValue(DataUtil.sanitizeString(businessIncorporation
+							.getEmail()));
+					businessData.setEmailAddress(eat);
+
+					// business identity
+					// **** CHECK ID type value
+					if (!DataUtil.isEmpty(businessIncorporation
+							.getRegistrationNumber())) {
+						IdentificationType identification = new IdentificationType();
+						identification
+								.setIDType(IdentificationConstant.REGISTRATION_NUMBER);
+						identification
+								.setIdentificationNumber(businessIncorporation
+										.getRegistrationNumber());
+						identification.setEffectiveDate(today);
+						customerData.getIdentification().add(identification);
+					}
+					if (!DataUtil.isEmpty(businessIncorporation
+							.getCorporationNumber())) {
+						IdentificationType identification = new IdentificationType();
+						identification
+								.setIDType(IdentificationConstant.CORPORATION_NUMBER);
+						identification
+								.setIdentificationNumber(businessIncorporation
+										.getCorporationNumber());
+						identification.setEffectiveDate(today);
+						customerData.getIdentification().add(identification);
+					}
+
+					// business phone numbers
+					if (!DataUtil.isEmpty(businessIncorporation
+							.getBusinessPhone())) {
+						customerData.getPhoneNumbers().add(
+								createPhoneNumber(PhoneNumberConstant.BUSINESS,
+										businessIncorporation
+												.getBusinessPhone(),
+										businessIncorporation.getBusinessExt(),
+										today));
+					}
+					if (!DataUtil.isEmpty(businessIncorporation
+							.getNotificationPhone())) {
+						customerData.getPhoneNumbers().add(
+								createPhoneNumber(
+										PhoneNumberConstant.NOTIFICATION,
+										businessIncorporation
+												.getNotificationPhone(), null,
+										today));
+					}
+					if (!DataUtil.isEmpty(businessIncorporation.getFaxNumber())) {
+						customerData.getPhoneNumbers().add(
+								createPhoneNumber(PhoneNumberConstant.FAX,
+										businessIncorporation.getFaxNumber(),
+										null, today));
+					}
 
 				} else if (businessPrivate != null) {
-					businessData.setBusinessType("Private");
+					businessData.setBusinessCategory(MoveInConstant.MOVEIN_BUSINESS_CATEGORY_PVT);
 
+					// business info
+					businessData.setCompanyName(businessPrivate
+							.getBusinessName());
+					EmailAddressType eat = new EmailAddressType();
+					eat.setValue(DataUtil.sanitizeString(businessPrivate
+							.getEmail()));
+					businessData.setEmailAddress(eat);
+
+					// business identification
+					if (!DataUtil.isEmpty(businessPrivate.getBusinessLicense())) {
+						IdentificationType identification = new IdentificationType();
+						identification.setIDType(MoveInConstant.MOVEIN_BUSINESS_ID);
+						identification.setIdentificationNumber(businessPrivate
+								.getBusinessLicense());
+						identification.setEffectiveDate(today);
+						customerData.getIdentification().add(identification);
+					}
+
+					// business primary owner info
 					OwnerInfo ownerInfo = new OwnerInfo();
 					ownerInfo.setOwnerName(DataUtil
 							.sanitizeString(businessPrivate.getOwnerName()));
 					ownerInfo.setDateOfBirth(DataUtil
 							.dateToCalendar(businessPrivate.getBirthDate()));
-					ownerInfo.setPhoneNumber(DataUtil
-							.sanitizeString(businessPrivate.getPhoneNumber()));
+
 					businessData.getOwnerInfo().add(ownerInfo);
 
 					ownerInfo.setDriverLicenceNumber(businessPrivate
 							.getDriverLicense());
-					EmailAddressType eat = new EmailAddressType();
-					eat.setValue(DataUtil.sanitizeString(businessPrivate
-							.getEmail()));
-					ownerInfo.setEmailAddress(eat);
 
 					ownerInfo.setPosition(businessPrivate.getPosition());
 
-				}
+					// business phone numbers
+					if (!DataUtil.isEmpty(businessPrivate.getBusinessPhone())) {
+						customerData
+								.getPhoneNumbers()
+								.add(createPhoneNumber(
+										PhoneNumberConstant.BUSINESS,
+										businessPrivate.getBusinessPhone(),
+										businessPrivate.getBusinessExt(), today));
+					}
+					if (!DataUtil.isEmpty(businessPrivate
+							.getNotificationPhone())) {
+						customerData.getPhoneNumbers().add(
+								createPhoneNumber(
+										PhoneNumberConstant.NOTIFICATION,
+										businessPrivate.getNotificationPhone(),
+										null, today));
+					}
+					if (!DataUtil.isEmpty(businessPrivate.getFaxNumber())) {
+						customerData.getPhoneNumbers().add(
+								createPhoneNumber(PhoneNumberConstant.FAX,
+										businessPrivate.getFaxNumber(), null,
+										today));
+					}
 
-				System.out.println("moveInRequest.getBusinessContacts() "
-						+ moveInRequest.getBusinessContacts());
+				}
 
 				// business contact
-				List<BusinessContact> bizContacts = mapper.readValue(
-						moveInRequest.getBusinessContacts(),
-						mapper.getTypeFactory().constructCollectionType(
-								List.class, BusinessContact.class));
-				if (bizContacts != null && !bizContacts.isEmpty()) {
-					for (BusinessContact bc : bizContacts) {
+				if (moveInRequest.getBusinessContacts() != null) {
+					List<BusinessContact> bizContacts = mapper.readValue(
+							moveInRequest.getBusinessContacts(),
+							mapper.getTypeFactory().constructCollectionType(
+									List.class, BusinessContact.class));
+					if (bizContacts != null && !bizContacts.isEmpty()) {
+						for (BusinessContact bc : bizContacts) {
 
-						ContactInfo contactInfo = new ContactInfo();
+							ContactInfo contactInfo = new ContactInfo();
 
-						EmailAddressType emailAddressType = new EmailAddressType();
-						emailAddressType.setValue(DataUtil.sanitizeString(bc
-								.getEmail()));
-						contactInfo.setEmailAddress(emailAddressType);
-						contactInfo.setContactName(bc.getName());
-						contactInfo.setPhoneNumber(bc.getPhoneNumber());
-						// DJ contactInfo.setPostion(bc.getPosition());
+							EmailAddressType emailAddressType = new EmailAddressType();
+							emailAddressType.setValue(DataUtil
+									.sanitizeString(bc.getEmail()));
+							contactInfo.setContactName(bc.getName());
+							contactInfo.setPosition(bc.getPosition());
+							contactInfo.setPhoneNumber(bc.getPhoneNumber());
+							contactInfo.setEmailAddress(emailAddressType);
 
-						businessData.getContactInfo().add(contactInfo);
+							businessData.getContactInfo().add(contactInfo);
+						}
 					}
 				}
+
 			}
 
 			customerData.setBPGeneralData(bpGeneralData);
@@ -404,7 +524,7 @@ public class MoveInProxy {
 		phoneNumberCategory.setValue(category);
 		phoneNumberType.setRemarks(phoneNumberCategory);
 		CountryCodeType countryCodeType = new CountryCodeType();
-		countryCodeType.setValue("CA");
+		countryCodeType.setValue(MoveInConstant.MOVEIN_COUNTRY_CODE);
 		phoneNumberType.setCountryCode(countryCodeType);
 		phoneNumberType.setEffectiveDate(effDate);
 		return phoneNumberType;

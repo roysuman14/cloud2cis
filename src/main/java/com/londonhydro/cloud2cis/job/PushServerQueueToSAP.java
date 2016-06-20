@@ -6,8 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.londonhydro.cloud2cis.bo.AccountMailingAddressProxy;
+import com.londonhydro.cloud2cis.bo.BudgetBillingProxy;
+import com.londonhydro.cloud2cis.bo.EmailAddressProxy;
+import com.londonhydro.cloud2cis.bo.IdentificationDataProxy;
+import com.londonhydro.cloud2cis.bo.MailingAddressProxy;
+import com.londonhydro.cloud2cis.bo.MeterReadingProxy;
+import com.londonhydro.cloud2cis.bo.PaperlessBillingProxy;
+import com.londonhydro.cloud2cis.bo.PhoneNumberProxy;
 import com.londonhydro.cloud2cis.model.QueueTypes;
 import com.londonhydro.cloud2cis.model.ServerQueue;
+import com.londonhydro.exception.CISException;
 import com.londonhydro.sap.SAPErrorCode;
 import com.londonhydro.sap.model.ServiceQueue;
 
@@ -28,51 +37,68 @@ public class PushServerQueueToSAP extends SAPAbstractJob {
 			logger.info("There are no Server Queues to be sent.");
 		else {
 
-			for (Map.Entry<Long, List<ServerQueue>> entry : serverQueuesMap.entrySet()) {
+			for (Map.Entry<Long, List<ServerQueue>> entry : serverQueuesMap
+					.entrySet()) {
 
 				ServiceQueue sq = new ServiceQueue();
-				
-				QueueTypes serverType = QueueTypes.valueOf(entry.getValue().get(0).getTransactionDescription());
+
+				QueueTypes serverType = QueueTypes.valueOf(entry.getValue()
+						.get(0).getTransactionDescription());
 
 				switch (serverType) {
 				case ChangePhoneNumber:
-					//sq = (new PhoneNumberProxy()).marshal(entry.getValue());
+					sq = (new PhoneNumberProxy()).marshal(entry.getValue());
 					break;
 				case ChangeEmailAddress:
-					//sq = (new EmailAddressProxy()).marshal(entry.getValue());
+					sq = (new EmailAddressProxy()).marshal(entry.getValue());
 					break;
 				case ChangeBillDeliveryMethod:
-					//sq = (new PaperlessBillingProxy()).marshal(entry.getValue());
+					sq = (new PaperlessBillingProxy())
+							.marshal(entry.getValue());
 					break;
 				case MeterReading:
-					//sq = (new MeterReadingProxy()).marshal(entry.getValue());
+					sq = (new MeterReadingProxy()).marshal(entry.getValue());
 					break;
 				case CreateBudgetBilling:
-					//sq = (new BudgetBillingProxy()).marshal2(entry.getValue());
+					sq = (new BudgetBillingProxy()).marshalCreate(entry.getValue());
 					break;
 				case UpdateBudgetBilling:
-					//sq = (new BudgetBillingProxy()).marshal(entry.getValue());
+					sq = (new BudgetBillingProxy()).marshal(entry.getValue());
 					break;
 				case ChangeMailingAddress:
-					//sq = (new MailingAddressProxy()).marshal(entry.getValue());
+					sq = (new MailingAddressProxy()).marshal(entry.getValue());
 					break;
-				case ChangeFixedAddress:
-					//sq = (new FixedMailingAddressProxy()).marshal(entry.getValue());
+				case ChangeAccountAddress:
+					sq = (new AccountMailingAddressProxy()).marshal(entry
+							.getValue());
+					break;
+				case ChangeMasterData:
+					sq = (new IdentificationDataProxy()).marshal(entry
+							.getValue());
 					break;
 				default:
 					break;
 				}
 
 				Integer responseStatus = sendServiceQueue(sq);
-				if (responseStatus != null && responseStatus == SAPErrorCode.SAP_SUCCESS_STATUS_CODE.getCode()) {
-					logger.info(String.format("Server Queues have been sent to SAP. Server Queues from id=%d to id=%d",
-							entry.getValue().get(0).getId(),
-							entry.getValue().get(entry.getValue().size() - 1).getId()));
+				if (responseStatus != null
+						&& responseStatus == SAPErrorCode.SAP_SUCCESS_STATUS_CODE
+								.getCode()) {
+					logger.info(String
+							.format("Server Queues have been sent to SAP. Server Queues from id=%d to id=%d",
+									entry.getValue().get(0).getId(),
+									entry.getValue()
+											.get(entry.getValue().size() - 1)
+											.getId()));
 				} else {
 
-					SAPErrorCode sapErrorCode = SAPErrorCode.valueOf(responseStatus);
-					logger.error(String.format("Failed when calling SAP end point [%s] - HTTP Status Code = %d | %s",
-							sapWSEndPoint, sapErrorCode.getCode(), sapErrorCode.getDescription()));
+					SAPErrorCode sapErrorCode = SAPErrorCode
+							.valueOf(responseStatus);
+					logger.error(String
+							.format("Failed when calling SAP end point [%s] - HTTP Status Code = %d | %s",
+									sapWSEndPoint, sapErrorCode.getCode(),
+									sapErrorCode.getDescription()));
+					throw new CISException(sapErrorCode);
 
 				}
 
@@ -82,7 +108,8 @@ public class PushServerQueueToSAP extends SAPAbstractJob {
 
 	}
 
-	private Map<Long, List<ServerQueue>> createServerQueuesMap(List<ServerQueue> serverQueues) {
+	private Map<Long, List<ServerQueue>> createServerQueuesMap(
+			List<ServerQueue> serverQueues) {
 
 		Map<Long, List<ServerQueue>> serverQueueMap = new HashMap<Long, List<ServerQueue>>();
 

@@ -472,7 +472,7 @@ public class MoveInRequest extends BaseEntity<Long> implements Ideable<Long> {
 			personalContact.setBizPhone(this.getBizPhone());
 			personalContact.setBizPhoneExt(this.getBizPhoneExt());
 			personalContact.setCellPhoneNumber(this.getCellPhoneNumber());
-			personalContact.setNotifyPhoneNumber(this.getNotifyPhoneNumber());
+			personalContact.setNotificationPhone(this.getNotifyPhoneNumber());
 			personalContact.setResiPhone(this.getResiPhone());
 			moveinRequestVO.setPersonalContact(personalContact);
 		}

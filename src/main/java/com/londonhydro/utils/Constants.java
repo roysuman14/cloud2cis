@@ -14,41 +14,24 @@ public interface Constants {
 
 	String JOB_SERVER_QUEUE = "ServerQueueJob";
 	String JOB_MOVE_IN = "MoveInJob";
-	String JOB_PHONE_NO = "PhoneNumberJob";
-	String JOB_MAILING_ADDRESS = "MailingAddressJob";
-	String JOB_FIXED_MAILING_ADDRESS = "FixedMailingAddressJob";
-	String JOB_EMAIL = "EmailJob";
-	String JOB_MASTER_DATA = "MasterDataJob";
 	String JOB_MOVE_OUT = "MoveOutJob";
 	String JOB_TRANSFER = "TransferJob";
+	String JOB_PAYMENT_NOTIFICATION_QUEUE = "PaymentNotificationQueueJob";
+	String JOB_PAYMENT_ARRANGEMENTS_QUEUE = "PaymentArrangementsQueueJob";
 
-	// TRIGGER NAMES
-
-	String TRIGGER_SERVER_QUEUE = "TriggerServerQueueJob";
-	String TRIGGER_MOVE_IN = "TriggerMoveInJob";
-	String TRIGGER_PHONE_NO = "TriggerPhoneNumberJob";
-	String TRIGGER_MAILING_ADDRESS = "TriggerMailingAddressJob";
-	String TRIGGER_FIXED_MAILING_ADDRESS = "TriggerFixedMailingAddressJob";
-	String TRIGGER_EMAIL = "EmailJob";
-	String TRIGGER_MASTER_DATA = "MasterDataJob";
-	String TRIGGER_MOVE_OUT = "MoveOutJob";
-	String TRIGGER_TRANSFER = "TransferJob";
 
 	// CRON PROPERTIES
 
-	String PROPERTY_SCHEDULER_START_DELAYED = "com.londonhydro.broker.scheduler.secondsStartdDelayed";
-	String PROPERTY_JOBs_ONE_TIME_DELAY = "com.londonhydro.broker.jobs.oneTimeMillisecondsDelay";
+	String PROPERTY_SCHEDULER_START_DELAYED = "com.londonhydro.cloud2cis.scheduler.secondsStartdDelayed";
+	String PROPERTY_JOBs_ONE_TIME_DELAY = "com.londonhydro.cloud2cis.jobs.oneTimeMillisecondsDelay";
 
-	String PROPERTY_DUMMY = "com.londonhydro.broker.jobs.dummyJob.cron";
-	String PROPERTY_JOBS_SERVER_QUEUE = "com.londonhydro.cloud2cis.jobs.serverQueueJob.cron";
-	String PROPERTY_JOBS_MOVEIN_QUEUE = "com.londonhydro.cloud2cis.jobs.moveInJob.cron";
-	String PROPERTY_JOBS_PHONENO_QUEUE = "com.londonhydro.cloud2cis.jobs.phoneNumber.cron";
-	String PROPERTY_JOBS_MAILING_ADDRESS_QUEUE = "com.londonhydro.cloud2cis.jobs.mailingAddress.cron";
-	String PROPERTY_JOBS_FIXED_MAILING_ADDRESS_QUEUE = "com.londonhydro.cloud2cis.jobs.fixedMailingAddress.cron";
-	String PROPERTY_JOBS_EMAIL_QUEUE = "com.londonhydro.cloud2cis.jobs.emailAddress.cron";
-	String PROPERTY_JOBS_MASTER_DATA_QUEUE = "com.londonhydro.cloud2cis.jobs.masterData.cron";
-	String PROPERTY_JOBS_MOVE_OUT_QUEUE = "com.londonhydro.cloud2cis.jobs.moveOut.cron";
-	String PROPERTY_JOBS_TRANSFER_QUEUE = "com.londonhydro.cloud2cis.jobs.transfer.cron";
+	String PROPERTY_DUMMY = "com.londonhydro.cloud2cis.jobs.dummyJob.cron";
+	String PROPERTY_JOBS_SERVER_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.serverQueueJob.cron";
+	String PROPERTY_JOBS_MOVEIN_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.moveInJob.cron";
+	String PROPERTY_JOBS_MOVE_OUT_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.moveOut.cron";
+	String PROPERTY_JOBS_TRANSFER_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.transfer.cron";
+	String PROPERTY_JOBS_PAYMENT_NOTIFICATION_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.paymentNotificationQueueJob.cron";
+	String PROPERTY_JOBS_PAYMENT_ARRANGEMENTS_QUEUE_CRON = "com.londonhydro.cloud2cis.jobs.paymentArrangementsQueueJob.cron";
 
 	
 	
@@ -66,4 +49,17 @@ public interface Constants {
 	 */
 	String XML_SQL_GET_NEXT_BATCHID = "getNextBatchId";
 	String XML_SQL_GET_RECORDS_BY_BATCHID = "getRecordsByBatchId";
+	
+	String BUDGET_BILLING_PAYMENT_TYPE="0001";
+	String NOT_APPLICABLE_CODE="NA";
+	
+	String BP_SUB_TYPE_NEW="New";
+	String BP_SUB_TYPE_EXISTING="Exsiting";
+	
+	String YN_CODE_Y="Y";
+	String YN_CODE_N="N";
+	String YN_CODE_YES="Yes";
+	String YN_CODE_NO="No";
+	
+	String PAPERLESS_BILLING_FLAG="X";
 }

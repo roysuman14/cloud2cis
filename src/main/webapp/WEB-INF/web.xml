@@ -21,7 +21,7 @@
     <context-param>
       <param-name>resteasy.providers</param-name>
       <param-value>
-	      com.londonhydro.broker.interceptors.RequestInterceptor,
+	      com.londonhydro.cloud2cis.interceptors.RequestInterceptor,
 	      com.londonhydro.utils.exception.mapper.RuntimeExceptionMapper,
 	      com.londonhydro.utils.exception.mapper.MethodConstraintViolationExceptionMapper,
 	      com.londonhydro.utils.exception.mapper.BadRequestExceptionMapper,

@@ -28,7 +28,7 @@ public class GetMoveInJob extends AbstractJob {
 	private String lhServer;
 
 	@Inject
-	@Named("com.londonhydro.broker.jobs.moveIn.endPoint")
+	@Named("com.londonhydro.cloud2cis.jobs.moveIn.endPoint")
 	private String moveInEndPoint;
 
 	@Inject
